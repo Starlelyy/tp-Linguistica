@@ -1386,46 +1386,45 @@
     }
   }
 
-  function navigateToHash(hash, shouldScroll = true) {
-    const targetId = (hash || "#inicio").slice(1);
+function navigateToHash(hash, shouldScroll = true) {
+  const targetId = (hash || "#inicio").slice(1);
 
-    // Volver a la portada.
-    if (targetId === "inicio" || !targetId) {
-      showSection(heroSection, null, shouldScroll, "inicio");
-      return;
-    }
-
-    const target = document.getElementById(targetId);
-
-    if (!target) {
-      console.warn("No existe un destino con el ID:", targetId);
-      return;
-    }
-
-    // Si el destino es una teoría, mostrar solo esa teoría.
-    if (target.classList.contains("theory")) {
-      showSection(
-        theoriesSection,
-        target,
-        shouldScroll,
-        target.id
-      );
-      return;
-    }
-
-    // El botón "Teorías" abre la sección mostrando la primera teoría.
-    if (target === theoriesSection) {
-      showSection(theoriesSection, theoryCards[0], shouldScroll, "teorias");
-      return;
-    }
-
-    // Mostrar la sección correspondiente al enlace seleccionado.
-    const section = target.closest("main > section");
-
-    if (section) {
-      showSection(section, null, shouldScroll, targetId);
-    }
+  if (targetId === "inicio" || !targetId) {
+    showSection(heroSection, null, shouldScroll, "inicio");
+    return;
   }
+
+  const target = document.getElementById(targetId);
+
+  if (!target) {
+    console.warn("No existe un destino con el ID:", targetId);
+    return;
+  }
+
+  // Si se hace clic en uno de los álbumes, mostrar su teoría.
+  if (target.classList.contains("theory")) {
+    showSection(theoriesSection, target, shouldScroll, targetId);
+    return;
+  }
+
+  // Si se hace clic en el apartado general de teorías,
+  // mostrar la primera teoría.
+  if (targetId === "teorias") {
+    showSection(theoriesSection, theoryCards[0], shouldScroll, "teorias");
+    return;
+  }
+
+  const section = target.closest("main > section");
+
+  if (section) {
+    showSection(
+      section,
+      null,
+      shouldScroll,
+      section.id || "inicio"
+    );
+  }
+}
 
   // Interceptar los enlaces internos del sitio.
   document.addEventListener("click", function(event) {
