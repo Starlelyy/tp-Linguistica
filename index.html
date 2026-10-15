@@ -396,6 +396,7 @@
     .analysis-text { max-width: 900px; color: #d4dfe2; }
     .analysis-text p + p { margin-top: 16px; }
 
+    /* ACTIVIDAD INTERACTIVA: ESTILO QUIZ */
     .interactive-panel {
       padding: clamp(24px,5vw,48px);
       background: var(--cream);
@@ -410,55 +411,231 @@
       font-size: clamp(2rem,4vw,3.1rem);
     }
 
-    .interactive-panel > p { max-width: 780px; color: #40535b; }
+    .interactive-panel > p {
+      max-width: 780px;
+      color: #40535b;
+    }
 
-    .choice-grid {
-      display: grid;
-      grid-template-columns: repeat(3,minmax(0,1fr));
-      gap: 14px;
+    .quiz-topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
       margin-top: 28px;
-    }
-
-    .choice {
-      min-height: 170px;
-      padding: 20px;
-      text-align: left;
-      color: var(--dark);
-      background: white;
-      border: 2px solid #d7dedb;
-      border-radius: 3px;
-      transition: border-color .2s, transform .2s;
-    }
-
-    .choice:hover { transform: translateY(-3px); border-color: var(--green); }
-    .choice[aria-pressed="true"] { border-color: var(--red); background: #fff3f1; }
-    .choice-number { display: block; margin-bottom: 12px; color: #b91c0c; font-size: .7rem; font-weight: 700; letter-spacing: .1em; }
-    .choice strong { display: block; margin-bottom: 8px; font-family: "Playfair Display",serif; font-size: 1.2rem; line-height: 1.25; }
-    .choice span:last-child { color: #52636a; font-size: .86rem; }
-
-    .interaction-result {
-      display: none;
-      margin-top: 24px;
-      padding: 24px;
-      color: var(--cream);
-      background: var(--dark);
-      border-left: 4px solid var(--red);
-    }
-
-    .interaction-result.visible { display: block; }
-    .interaction-result h3 { margin-bottom: 12px; color: var(--mint); font-size: 1.5rem; }
-    .interaction-result p { color: #d4dfe2; }
-    .interaction-result p + p { margin-top: 12px; }
-
-    .reset-choice {
-      margin-top: 18px;
-      padding: 9px 13px;
-      color: var(--dark);
-      background: var(--mint);
-      border: none;
-      border-radius: 3px;
+      color: #40535b;
       font-size: .8rem;
       font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .quiz-progress {
+      height: 8px;
+      margin: 12px 0 28px;
+      overflow: hidden;
+      background: #dce2de;
+      border-radius: 20px;
+    }
+
+    .quiz-progress-fill {
+      width: 0%;
+      height: 100%;
+      background: var(--green);
+      border-radius: inherit;
+      transition: width .3s ease;
+    }
+
+    .quiz-card {
+      padding: clamp(20px,4vw,34px);
+      background: #fff;
+      border: 1px solid #d7dedb;
+      border-radius: 5px;
+    }
+
+    .quiz-category {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 5px 10px;
+      color: #a32113;
+      background: #fff0ed;
+      border-radius: 3px;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .quiz-question {
+      margin-bottom: 22px;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(1.45rem,3vw,2.1rem);
+      line-height: 1.3;
+    }
+
+    .quiz-answers {
+      display: grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      gap: 12px;
+    }
+
+    .quiz-answer {
+      min-height: 75px;
+      padding: 15px;
+      text-align: left;
+      color: var(--dark);
+      background: #f7f8f6;
+      border: 2px solid #d7dedb;
+      border-radius: 4px;
+      transition: border-color .2s, background .2s, transform .2s;
+    }
+
+    .quiz-answer:hover:not(:disabled) {
+      transform: translateY(-2px);
+      border-color: var(--green);
+    }
+
+    .quiz-answer:focus-visible,
+    .quiz-next:focus-visible,
+    .quiz-restart:focus-visible {
+      outline: 3px solid var(--red);
+      outline-offset: 3px;
+    }
+
+    .quiz-answer:disabled { cursor: default; }
+
+    .quiz-answer.correct {
+      border-color: #16825f;
+      background: #e5f7ef;
+    }
+
+    .quiz-answer.incorrect {
+      border-color: #c52b1c;
+      background: #fff0ed;
+    }
+
+    .answer-letter {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 27px;
+      height: 27px;
+      margin-right: 8px;
+      color: #40535b;
+      background: #e8ece9;
+      border-radius: 50%;
+      font-size: .75rem;
+      font-weight: 700;
+    }
+
+    .quiz-feedback {
+      display: none;
+      margin-top: 20px;
+      padding: 18px;
+      color: var(--dark);
+      background: #edf3f0;
+      border-left: 4px solid var(--green);
+    }
+
+    .quiz-feedback.visible { display: block; }
+    .quiz-feedback.wrong { border-left-color: var(--red); }
+    .quiz-feedback strong { display: block; margin-bottom: 6px; }
+    .quiz-feedback p { color: #40535b; font-size: .92rem; }
+
+    .quiz-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .quiz-score-label {
+      color: #40535b;
+      font-size: .9rem;
+      font-weight: 700;
+    }
+
+    .quiz-next,
+    .quiz-restart,
+    .quiz-start {
+      padding: 12px 18px;
+      color: white;
+      background: var(--dark);
+      border: 0;
+      border-radius: 3px;
+      font-size: .82rem;
+      font-weight: 700;
+      transition: transform .2s, background .2s;
+    }
+
+    .quiz-next:hover,
+    .quiz-restart:hover,
+    .quiz-start:hover {
+      transform: translateY(-2px);
+      background: #0a304a;
+    }
+
+    .quiz-next:disabled { opacity: .4; cursor: not-allowed; transform: none; }
+
+    .quiz-start {
+      margin-top: 25px;
+      padding: 14px 22px;
+      color: var(--dark);
+      background: var(--mint);
+    }
+
+    .quiz-start:hover { background: #83d9bf; }
+
+    .quiz-welcome {
+      margin-top: 26px;
+      padding: clamp(22px,4vw,34px);
+      background: white;
+      border: 1px solid #d7dedb;
+      border-radius: 5px;
+    }
+
+    .quiz-welcome h3 {
+      margin-bottom: 12px;
+      font-size: 1.7rem;
+    }
+
+    .quiz-welcome p { color: #40535b; }
+    .quiz-welcome ul { margin: 15px 0 0 22px; color: #40535b; }
+    .quiz-welcome li { margin: 7px 0; }
+
+    .quiz-final {
+      display: none;
+      margin-top: 25px;
+      padding: clamp(22px,4vw,36px);
+      color: var(--cream);
+      background: var(--dark);
+      border-top: 4px solid var(--red);
+      text-align: center;
+    }
+
+    .quiz-final.visible { display: block; }
+
+    .quiz-final .final-label {
+      color: var(--mint);
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .quiz-final h3 {
+      margin: 12px 0;
+      font-size: clamp(2rem,4vw,3rem);
+    }
+
+    .quiz-final p { color: #d4dfe2; }
+    .quiz-final .final-score {
+      margin: 18px 0;
+      color: var(--mint);
+      font-family: "Playfair Display", serif;
+      font-size: 2.7rem;
     }
 
     .media-grid {
@@ -540,7 +717,7 @@
     .search-message.visible { display: block; }
     mark.search-highlight { color: var(--dark); background: var(--mint); padding: 1px 3px; }
 
-    /* NAVEGACIÓN: SOLO UNA SECCIÓN VISIBLE */
+    /* NAVEGACIÓN: SOLO UNA SECCIÓN PRINCIPAL VISIBLE */
     main > section { display: none; }
 
     main > section.view-active {
@@ -549,6 +726,11 @@
     }
 
     main > section.hero.view-active { display: grid; }
+
+    /* Las tarjetas de álbumes se mantienen visibles dentro de su sección. */
+    #albumes.view-active .album-grid {
+      display: grid;
+    }
 
     /* MOSTRAR UNA SOLA TEORÍA POR VEZ */
     .theory-list .theory { display: none; }
@@ -570,6 +752,8 @@
       .theory-list .theory.theory-active {
         animation: none;
       }
+
+      .quiz-progress-fill { transition: none; }
     }
 
     @media (max-width: 900px) {
@@ -595,7 +779,7 @@
       .album-card { min-height: 220px; }
       .theory { grid-template-columns: 1fr; gap: 12px; padding: 22px; }
       .theory-number { font-size: 2rem; }
-      .choice { min-height: 130px; }
+      .quiz-answers { grid-template-columns: 1fr; }
       footer { align-items: flex-start; flex-direction: column; }
     }
   </style>
@@ -609,6 +793,7 @@
 
     <nav class="menu" aria-label="Navegación principal">
       <a href="#contexto">Contexto</a>
+      <a href="#albumes">Álbumes</a>
       <a href="#teorias">Teorías</a>
       <a href="#autores">Autores</a>
       <a href="#interactivo">Interactivo</a>
@@ -636,8 +821,8 @@
           historia que no todos entienden de la misma manera.
         </p>
         <div class="hero-actions">
-          <a class="button" href="#teorias">Explorar las teorías</a>
-          <a class="button secondary" href="#interactivo">Probar la actividad</a>
+          <a class="button" href="#albumes">Explorar los álbumes</a>
+          <a class="button secondary" href="#interactivo">Probar el quiz</a>
         </div>
       </div>
 
@@ -753,12 +938,10 @@
 
       <div class="theory-list">
 
-        <!-- TEORÍA 1 -->
         <article class="theory" id="teoria1">
           <div class="theory-number">01</div>
           <div>
             <h3>La trilogía como un viaje espiritual: infierno, purgatorio y paraíso</h3>
-
             <p>
               La primera teoría relaciona los tres álbumes con las etapas de
               <em>La divina comedia</em>, obra de Dante Alighieri que presenta
@@ -767,7 +950,6 @@
               sucesivos de un viaje interior: caída, transición y posible
               transformación.
             </p>
-
             <p>
               En esta lectura, <em>After Hours</em> ocupa el lugar del infierno.
               Los fans pueden relacionar su atmósfera oscura, las imágenes de
@@ -776,7 +958,6 @@
               que entenderse literalmente: funciona como una imagen cultural
               que permite expresar culpa, dolor o pérdida de control.
             </p>
-
             <p>
               <em>Dawn FM</em> se interpreta como un estado intermedio, similar
               al purgatorio o al limbo. La idea de una estación de radio que
@@ -785,7 +966,6 @@
               no estaría todavía en una resolución definitiva, sino atravesando
               un proceso.
             </p>
-
             <p>
               Finalmente, <em>Hurry Up Tomorrow</em> puede ser leído como una
               posibilidad de transformación o salida. Sin embargo, esta
@@ -794,7 +974,6 @@
               sugerir ansiedad, incertidumbre o la dificultad de abandonar
               una identidad anterior.
             </p>
-
             <h4>¿Qué signos relacionan los fans?</h4>
             <ul>
               <li>Las atmósferas sonoras y los tonos emocionales de los discos.</li>
@@ -802,7 +981,6 @@
               <li>Las imágenes visuales y las referencias religiosas o espirituales.</li>
               <li>El orden de publicación de los álbumes, interpretado como una secuencia narrativa.</li>
             </ul>
-
             <p>
               La clave de esta teoría es que los signos se leen en conjunto.
               Un color oscuro, por ejemplo, no significa automáticamente
@@ -810,7 +988,6 @@
               que incluye otros elementos del álbum y el conocimiento cultural
               del fan sobre Dante.
             </p>
-
             <div class="reddit-fragment">
               <span class="source-label">Publicación para consultar · Reddit</span>
               <blockquote>
@@ -818,13 +995,9 @@
                 estructura de <em>La divina comedia</em>: Infierno,
                 Purgatorio y Paraíso.
               </blockquote>
-              <p>
-                Esta formulación resume la hipótesis que se analiza; no debe
-                tomarse como una declaración oficial de The Weeknd.
-              </p>
+              <p>Esta formulación resume la hipótesis que se analiza; no debe tomarse como una declaración oficial de The Weeknd.</p>
               <a class="source-link" href="https://www.reddit.com/r/TheWeeknd/comments/1fctl03/" target="_blank" rel="noopener noreferrer">Abrir la publicación en Reddit ↗</a>
             </div>
-
             <h4>Relación con Saussure</h4>
             <p>
               Desde Ferdinand de Saussure, un signo lingüístico se comprende
@@ -836,7 +1009,6 @@
               imagen: surge de convenciones culturales y de las relaciones
               que el intérprete establece con otros signos.
             </p>
-
             <h4>¿Qué demuestra esta teoría?</h4>
             <p>
               Demuestra cómo un fan organiza elementos dispersos en una
@@ -847,12 +1019,10 @@
           </div>
         </article>
 
-        <!-- TEORÍA 2 -->
         <article class="theory" id="teoria2">
           <div class="theory-number">02</div>
           <div>
             <h3>Las portadas como una secuencia: la dirección de la mirada</h3>
-
             <p>
               Una segunda teoría se concentra en un detalle visual concreto:
               la posición de la cabeza y la dirección de la mirada de The
@@ -861,7 +1031,6 @@
               el usuario compara las imágenes y las interpreta como una
               secuencia.
             </p>
-
             <p>
               Según la publicación, en la portada de <em>After Hours</em>
               el artista mira hacia abajo. El fan relaciona esa dirección
@@ -873,7 +1042,6 @@
               arriba se interpreta como una orientación hacia el cielo o
               hacia una posible salvación.
             </p>
-
             <p>
               La teoría también toma en cuenta la vestimenta y la apariencia
               del personaje. El fan interpreta esos elementos como indicios
@@ -882,21 +1050,12 @@
               combina con otros detalles visuales y con la hipótesis previa
               sobre Dante.
             </p>
-
             <div class="reddit-fragment">
               <span class="source-label">Fragmento de la publicación · Reddit</span>
-              <blockquote>
-                “In the After Hours cover, Abel is looking downwards”
-              </blockquote>
-              <p>
-                El autor de la publicación propone que la dirección de la
-                mirada es un indicio visual que puede conectarse con el
-                descenso al infierno. La publicación extiende la comparación
-                a las portadas de los otros dos álbumes.
-              </p>
+              <blockquote>“In the After Hours cover, Abel is looking downwards”</blockquote>
+              <p>El autor de la publicación propone que la dirección de la mirada es un indicio visual que puede conectarse con el descenso al infierno. La publicación extiende la comparación a las portadas de los otros dos álbumes.</p>
               <a class="source-link" href="https://www.reddit.com/r/TheWeeknd/comments/1g3006t/" target="_blank" rel="noopener noreferrer">Leer la teoría de las portadas en Reddit ↗</a>
             </div>
-
             <h4>¿Cómo se construye el sentido?</h4>
             <p>
               La dirección de una mirada es un elemento visual, no una
@@ -907,7 +1066,6 @@
               es una construcción interpretativa: mirar hacia abajo no
               significa “infierno” en todos los contextos posibles.
             </p>
-
             <h4>Relación con Saussure: valor y diferencia</h4>
             <p>
               Saussure sostiene que el valor de un signo depende de sus
@@ -918,7 +1076,6 @@
               frontal y la mirada hacia arriba. El sentido propuesto nace
               de la serie completa y de las diferencias entre sus partes.
             </p>
-
             <h4>Relación con Jakobson: función poética</h4>
             <p>
               La función poética pone el foco en la forma en que se organiza
@@ -929,7 +1086,6 @@
               el fan presta atención a la disposición de los elementos y a
               sus diferencias.
             </p>
-
             <h4>¿Qué límites tiene esta interpretación?</h4>
             <p>
               La teoría es una lectura posible, pero la postura de la cabeza
@@ -943,12 +1099,10 @@
           </div>
         </article>
 
-        <!-- TEORÍA 3 -->
         <article class="theory" id="teoria3">
           <div class="theory-number">03</div>
           <div>
             <h3>¿Cómo encaja <em>Hurry Up Tomorrow</em> en la trilogía moderna?</h3>
-
             <p>
               La tercera teoría plantea un problema diferente: en vez de
               aceptar sin discusión que los tres discos forman un recorrido
@@ -957,7 +1111,6 @@
               anteriores. El foco pasa de interpretar un símbolo específico
               a discutir la estructura global de la trilogía.
             </p>
-
             <p>
               Una posibilidad es considerar que el tercer álbum continúa
               principalmente elementos de <em>After Hours</em>, en lugar
@@ -968,7 +1121,6 @@
               conexiones temáticas que hagan que el relato se parezca más
               a un ciclo que a una línea recta.
             </p>
-
             <p>
               Esta interpretación obliga a revisar la primera teoría.
               Si se parte de que cada disco representa necesariamente una
@@ -978,7 +1130,6 @@
               si realmente hay una resolución, si el personaje vuelve a
               un estado previo o si las etapas se superponen.
             </p>
-
             <p>
               Por eso, el desacuerdo entre fans no consiste únicamente en
               elegir un significado para una imagen. También puede tratarse
@@ -988,7 +1139,6 @@
               mismas portadas y canciones, pero organizar sus evidencias
               de forma distinta.
             </p>
-
             <div class="reddit-fragment">
               <span class="source-label">Publicación para consultar · Reddit</span>
               <blockquote>
@@ -996,16 +1146,9 @@
                 con <em>After Hours</em> y <em>Dawn FM</em>, y sobre si el
                 último disco continúa directamente la narrativa del segundo.
               </blockquote>
-              <p>
-                La publicación se toma como punto de partida para estudiar
-                una pregunta interpretativa: ¿la trilogía debe leerse como
-                una progresión lineal o admite conexiones menos directas?
-                La descripción resume el problema y no pretende ser una
-                cita textual del usuario.
-              </p>
+              <p>La publicación se toma como punto de partida para estudiar una pregunta interpretativa: ¿la trilogía debe leerse como una progresión lineal o admite conexiones menos directas?</p>
               <a class="source-link" href="https://www.reddit.com/r/TheWeeknd/comments/1ijamgm/" target="_blank" rel="noopener noreferrer">Consultar el debate sobre la trilogía en Reddit ↗</a>
             </div>
-
             <h4>Relación con Saussure: el sentido depende del sistema</h4>
             <p>
               Esta teoría permite observar que ningún álbum tiene que
@@ -1015,7 +1158,6 @@
               la relación propuesta entre las obras, también puede cambiar
               el sentido atribuido al álbum final.
             </p>
-
             <h4>Relación con Jakobson: función referencial y emotiva</h4>
             <p>
               La función referencial aparece cuando el usuario menciona
@@ -1026,7 +1168,6 @@
               álbum y, a la vez, manifestar que esa conexión le resulta
               convincente o problemática.
             </p>
-
             <h4>Relación con Escandell Vidal: interpretar es inferir</h4>
             <p>
               Desde la pragmática, la interpretación no depende únicamente
@@ -1038,7 +1179,6 @@
               inferencias. La comunidad no recibe pasivamente una historia:
               participa en su reconstrucción.
             </p>
-
             <h4>¿Qué aporta esta tercera teoría?</h4>
             <p>
               Muestra que una comunidad puede debatir no solo qué significa
@@ -1073,142 +1213,92 @@
         <article class="concept-card">
           <span class="author">Ferdinand de Saussure</span>
           <h3>El signo y el sistema</h3>
-          <p>
-            Para Saussure, el signo lingüístico une un significante —la
-            imagen acústica o forma perceptible— y un significado —el
-            concepto asociado—. La relación entre ambos no es natural,
-            sino convencional dentro de una comunidad lingüística.
-          </p>
-          <p>
-            Además, el valor de un signo depende de sus diferencias y
-            relaciones con otros signos del sistema. Por eso, una palabra
-            no tiene valor únicamente por sí misma: también importa cómo
-            se distingue de otras.
-          </p>
-          <p>
-            En el corpus, esta idea ayuda a explicar por qué los fans
-            relacionan imágenes, colores, miradas y títulos. El significado
-            de una portada cambia según las relaciones que el intérprete
-            establece con las demás portadas y con su conocimiento cultural.
-          </p>
+          <p>Para Saussure, el signo lingüístico une un significante —la imagen acústica o forma perceptible— y un significado —el concepto asociado—. La relación entre ambos no es natural, sino convencional dentro de una comunidad lingüística.</p>
+          <p>Además, el valor de un signo depende de sus diferencias y relaciones con otros signos del sistema. Por eso, una palabra no tiene valor únicamente por sí misma: también importa cómo se distingue de otras.</p>
+          <p>En el corpus, esta idea ayuda a explicar por qué los fans relacionan imágenes, colores, miradas y títulos. El significado de una portada cambia según las relaciones que el intérprete establece con las demás portadas y con su conocimiento cultural.</p>
         </article>
 
         <article class="concept-card">
           <span class="author">Roman Jakobson</span>
           <h3>Las funciones del lenguaje</h3>
-          <p>
-            Jakobson distingue seis funciones, según el componente de la
-            comunicación que predomina: referencial, emotiva, conativa,
-            fática, metalingüística y poética. En un mismo mensaje pueden
-            coexistir varias; se habla de predominio, no de exclusividad.
-          </p>
-          <p>
-            En las teorías de Reddit, la función referencial aparece cuando
-            se describen álbumes o portadas; la emotiva, cuando el usuario
-            expresa una opinión o duda; y la conativa, cuando busca una
-            respuesta, invita a debatir o intenta convencer a otros.
-          </p>
-          <p>
-            También puede aparecer la función poética cuando la atención
-            se dirige a la forma del mensaje o a patrones visuales, como
-            la comparación de la mirada en las tres portadas.
-          </p>
+          <p>Jakobson distingue seis funciones, según el componente de la comunicación que predomina: referencial, emotiva, conativa, fática, metalingüística y poética. En un mismo mensaje pueden coexistir varias; se habla de predominio, no de exclusividad.</p>
+          <p>En las teorías de Reddit, la función referencial aparece cuando se describen álbumes o portadas; la emotiva, cuando el usuario expresa una opinión o duda; y la conativa, cuando busca una respuesta, invita a debatir o intenta convencer a otros.</p>
+          <p>También puede aparecer la función poética cuando la atención se dirige a la forma del mensaje o a patrones visuales, como la comparación de la mirada en las tres portadas.</p>
         </article>
 
         <article class="concept-card">
           <span class="author">María Victoria Escandell Vidal</span>
           <h3>Pragmática y contexto</h3>
-          <p>
-            La pragmática estudia cómo se interpretan los enunciados en
-            situaciones concretas. Para comprender un mensaje no alcanza
-            con conocer el código: también importan quién habla, a quién
-            se dirige, qué conocimientos comparte y qué intención se le
-            atribuye.
-          </p>
-          <p>
-            El destinatario realiza inferencias para recuperar sentidos
-            que no siempre están expresados de manera literal. La
-            interpretación surge de combinar lo dicho con información
-            contextual y conocimientos previos.
-          </p>
-          <p>
-            En Reddit, un fan puede entender una referencia porque conoce
-            videoclips, entrevistas o teorías anteriores. Otro lector puede
-            no reconocerla y llegar a una conclusión diferente. El contexto
-            digital también permite responder, corregir, discutir y
-            reformular hipótesis.
-          </p>
+          <p>La pragmática estudia cómo se interpretan los enunciados en situaciones concretas. Para comprender un mensaje no alcanza con conocer el código: también importan quién habla, a quién se dirige, qué conocimientos comparte y qué intención se le atribuye.</p>
+          <p>El destinatario realiza inferencias para recuperar sentidos que no siempre están expresados de manera literal. La interpretación surge de combinar lo dicho con información contextual y conocimientos previos.</p>
+          <p>En Reddit, un fan puede entender una referencia porque conoce videoclips, entrevistas o teorías anteriores. Otro lector puede no reconocerla y llegar a una conclusión diferente. El contexto digital también permite responder, corregir, discutir y reformular hipótesis.</p>
         </article>
       </div>
 
       <h3 class="subheading">Aplicación conjunta al corpus</h3>
       <div class="analysis-text">
-        <p>
-          Los tres enfoques se complementan. Saussure ayuda a estudiar
-          cómo los signos adquieren valor por sus relaciones; Jakobson
-          permite analizar qué hacen los usuarios mediante sus mensajes;
-          y Escandell Vidal explica cómo los participantes interpretan
-          esos mensajes a partir del contexto y de las inferencias.
-        </p>
-        <p>
-          Por ejemplo, un usuario puede observar que The Weeknd mira hacia
-          abajo en una portada y hacia arriba en otra. Desde una perspectiva
-          cercana a Saussure, compara las diferencias entre las imágenes
-          y las integra en un sistema de relaciones. Desde Jakobson, puede
-          describirse cómo presenta información sobre las portadas, expresa
-          su opinión e intenta convencer a otros participantes. Desde la
-          pragmática, se considera que el lector interpreta esa propuesta
-          según su conocimiento de los álbumes, de la obra de Dante y de
-          las conversaciones previas.
-        </p>
-        <p>
-          Así, el sentido no se presenta como una propiedad evidente que
-          todos descubren de manera idéntica. Se construye mediante
-          relaciones entre signos, decisiones discursivas, conocimientos
-          compartidos y situaciones comunicativas. Esto no significa que
-          cualquier interpretación sea igualmente sólida: una teoría puede
-          evaluarse según la evidencia que presenta, la coherencia de sus
-          conexiones y su capacidad para explicar los elementos que
-          selecciona.
-        </p>
+        <p>Los tres enfoques se complementan. Saussure ayuda a estudiar cómo los signos adquieren valor por sus relaciones; Jakobson permite analizar qué hacen los usuarios mediante sus mensajes; y Escandell Vidal explica cómo los participantes interpretan esos mensajes a partir del contexto y de las inferencias.</p>
+        <p>Por ejemplo, un usuario puede observar que The Weeknd mira hacia abajo en una portada y hacia arriba en otra. Desde una perspectiva cercana a Saussure, compara las diferencias entre las imágenes y las integra en un sistema de relaciones. Desde Jakobson, puede describirse cómo presenta información sobre las portadas, expresa su opinión e intenta convencer a otros participantes. Desde la pragmática, se considera que el lector interpreta esa propuesta según su conocimiento de los álbumes, de la obra de Dante y de las conversaciones previas.</p>
+        <p>Así, el sentido no se presenta como una propiedad evidente que todos descubren de manera idéntica. Se construye mediante relaciones entre signos, decisiones discursivas, conocimientos compartidos y situaciones comunicativas. Esto no significa que cualquier interpretación sea igualmente sólida: una teoría puede evaluarse según la evidencia que presenta, la coherencia de sus conexiones y su capacidad para explicar los elementos que selecciona.</p>
       </div>
     </section>
 
-    <!-- ACTIVIDAD INTERACTIVA -->
+    <!-- ACTIVIDAD INTERACTIVA: QUIZ -->
     <section id="interactivo">
       <div class="interactive-panel">
-        <span class="section-number">05 / Actividad interactiva</span>
-        <h2>¿Cómo interpretarías las pistas?</h2>
+        <span class="section-number">05 / Desafío lingüístico</span>
+        <h2>¿Podés descifrar las pistas?</h2>
         <p>
-          Elegí la forma de análisis que te resulte más convincente.
-          Al seleccionar una opción, vas a ver cómo se relaciona con
-          los conceptos lingüísticos trabajados en esta página.
+          Entrá en el desafío y poné a prueba lo que aprendiste sobre los signos,
+          las funciones del lenguaje y las interpretaciones de los fans de
+          The Weeknd. Cada respuesta correcta suma puntos.
         </p>
 
-        <div class="choice-grid">
-          <button class="choice" type="button" data-choice="journey" aria-pressed="false">
-            <span class="choice-number">OPCIÓN 01</span>
-            <strong>Un viaje de transformación</strong>
-            <span>Relacionar los tres discos con infierno, purgatorio y paraíso.</span>
-          </button>
-
-          <button class="choice" type="button" data-choice="covers" aria-pressed="false">
-            <span class="choice-number">OPCIÓN 02</span>
-            <strong>Una historia en las portadas</strong>
-            <span>Comparar las miradas y la composición visual de los álbumes.</span>
-          </button>
-
-          <button class="choice" type="button" data-choice="cycle" aria-pressed="false">
-            <span class="choice-number">OPCIÓN 03</span>
-            <strong>Una historia no lineal</strong>
-            <span>Cuestionar si el álbum final cierra realmente el recorrido.</span>
-          </button>
+        <div class="quiz-welcome" id="quizWelcome">
+          <h3>Tu misión empieza acá</h3>
+          <p>Vas a responder 6 preguntas. Leé cada situación, elegí una respuesta y revisá la explicación para entender por qué es correcta.</p>
+          <ul>
+            <li><strong>+100 puntos</strong> por cada respuesta correcta.</li>
+            <li>Vas a recibir una explicación después de cada respuesta.</li>
+            <li>Al final, vas a descubrir tu resultado.</li>
+          </ul>
+          <button type="button" class="quiz-start" id="startQuiz">Comenzar desafío →</button>
         </div>
 
-        <div class="interaction-result" id="interactionResult" aria-live="polite">
-          <h3 id="resultTitle">Tu interpretación</h3>
-          <div id="resultText"></div>
-          <button type="button" class="reset-choice" id="resetChoice">Volver a elegir</button>
+        <div id="quizGame" hidden>
+          <div class="quiz-topline">
+            <span id="quizCounter">Pregunta 1 de 6</span>
+            <span id="quizScore">Puntaje: 0</span>
+          </div>
+
+          <div class="quiz-progress" role="progressbar" aria-label="Progreso del quiz" aria-valuemin="0" aria-valuemax="6" aria-valuenow="0" id="quizProgress">
+            <div class="quiz-progress-fill" id="quizProgressFill"></div>
+          </div>
+
+          <div class="quiz-card">
+            <span class="quiz-category" id="quizCategory">Signos y significado</span>
+            <h3 class="quiz-question" id="quizQuestion"></h3>
+            <div class="quiz-answers" id="quizAnswers"></div>
+
+            <div class="quiz-feedback" id="quizFeedback" aria-live="polite">
+              <strong id="feedbackTitle"></strong>
+              <p id="feedbackText"></p>
+            </div>
+
+            <div class="quiz-controls">
+              <span class="quiz-score-label" id="quizHint">Elegí una respuesta para continuar.</span>
+              <button type="button" class="quiz-next" id="nextQuestion" disabled>Siguiente →</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-final" id="quizFinal" aria-live="polite">
+          <span class="final-label">Desafío completado</span>
+          <h3 id="finalTitle">¡Terminaste!</h3>
+          <p id="finalMessage"></p>
+          <div class="final-score" id="finalScore">0 / 600</div>
+          <p id="finalDetail"></p>
+          <button type="button" class="quiz-restart" id="restartQuiz">Volver a jugar ↻</button>
         </div>
       </div>
     </section>
@@ -1241,24 +1331,9 @@
 
         <div class="media-copy">
           <h3>¿Qué aporta lo audiovisual?</h3>
-          <p>
-            Una canción no comunica solamente a través de sus palabras.
-            La melodía, la voz, el ritmo, la iluminación, los colores,
-            los gestos y la composición de una escena también participan
-            en la producción de sentido.
-          </p>
-          <p>
-            Cuando los fans analizan un videoclip, seleccionan algunos
-            de esos elementos y los relacionan con otros materiales.
-            Una escena puede funcionar como evidencia para una teoría,
-            pero su interpretación depende de las conexiones que el
-            espectador construye.
-          </p>
-          <p>
-            Esto permite vincular el análisis lingüístico con una cultura
-            digital en la que los significados circulan entre canciones,
-            imágenes, comentarios, videos y debates colectivos.
-          </p>
+          <p>Una canción no comunica solamente a través de sus palabras. La melodía, la voz, el ritmo, la iluminación, los colores, los gestos y la composición de una escena también participan en la producción de sentido.</p>
+          <p>Cuando los fans analizan un videoclip, seleccionan algunos de esos elementos y los relacionan con otros materiales. Una escena puede funcionar como evidencia para una teoría, pero su interpretación depende de las conexiones que el espectador construye.</p>
+          <p>Esto permite vincular el análisis lingüístico con una cultura digital en la que los significados circulan entre canciones, imágenes, comentarios, videos y debates colectivos.</p>
         </div>
       </div>
     </section>
@@ -1271,31 +1346,9 @@
       </div>
 
       <div class="conclusion">
-        <p>
-          Las teorías sobre la trilogía de The Weeknd muestran que los
-          fans no se limitan a recibir una obra: seleccionan indicios,
-          los comparan y construyen explicaciones para compartirlas con
-          otras personas. La lectura que relaciona los discos con Dante,
-          la comparación de las miradas en las portadas y el debate sobre
-          la continuidad narrativa parten de preguntas diferentes y
-          organizan las evidencias de distintas maneras.
-        </p>
-        <p>
-          Saussure permite comprender la importancia de las relaciones
-          entre signos; Jakobson ayuda a reconocer las funciones que
-          cumplen los mensajes dentro de la discusión; y Escandell Vidal
-          permite explicar por qué la interpretación depende del contexto,
-          de los conocimientos previos y de las inferencias de los
-          participantes.
-        </p>
-        <p>
-          En definitiva, que existan varias interpretaciones no implica
-          que todas estén igualmente justificadas. Las teorías pueden
-          compararse según los signos que consideran, la coherencia de
-          sus argumentos y la evidencia que aportan. La comunidad digital
-          se convierte así en un espacio donde el significado se propone,
-          se discute y se revisa.
-        </p>
+        <p>Las teorías sobre la trilogía de The Weeknd muestran que los fans no se limitan a recibir una obra: seleccionan indicios, los comparan y construyen explicaciones para compartirlas con otras personas. La lectura que relaciona los discos con Dante, la comparación de las miradas en las portadas y el debate sobre la continuidad narrativa parten de preguntas diferentes y organizan las evidencias de distintas maneras.</p>
+        <p>Saussure permite comprender la importancia de las relaciones entre signos; Jakobson ayuda a reconocer las funciones que cumplen los mensajes dentro de la discusión; y Escandell Vidal permite explicar por qué la interpretación depende del contexto, de los conocimientos previos y de las inferencias de los participantes.</p>
+        <p>En definitiva, que existan varias interpretaciones no implica que todas estén igualmente justificadas. Las teorías pueden compararse según los signos que consideran, la coherencia de sus argumentos y la evidencia que aportan. La comunidad digital se convierte así en un espacio donde el significado se propone, se discute y se revisa.</p>
       </div>
     </section>
 
@@ -1304,11 +1357,7 @@
       <div class="section-heading">
         <span class="section-number">08 / Fuentes y referencias</span>
         <h2>Bibliografía y corpus digital</h2>
-        <p>
-          Las fuentes se dividen entre publicaciones de fans —que constituyen
-          el corpus de análisis— y materiales teóricos para estudiar los
-          conceptos lingüísticos. Los enlaces externos se abren en una nueva pestaña.
-        </p>
+        <p>Las fuentes se dividen entre publicaciones de fans —que constituyen el corpus de análisis— y materiales teóricos para estudiar los conceptos lingüísticos. Los enlaces externos se abren en una nueva pestaña.</p>
       </div>
 
       <h3 class="subheading">Corpus: publicaciones de Reddit</h3>
@@ -1376,83 +1425,281 @@
 <div class="search-message" id="searchMessage" role="status" aria-live="polite"></div>
 
 <script>
-  // ACTIVIDAD INTERACTIVA
-  const choiceButtons = document.querySelectorAll(".choice");
-  const interactionResult = document.getElementById("interactionResult");
-  const resultTitle = document.getElementById("resultTitle");
-  const resultText = document.getElementById("resultText");
-  const resetChoice = document.getElementById("resetChoice");
+  // =====================================================
+  // QUIZ INTERACTIVO
+  // =====================================================
 
-  const interpretations = {
-    journey: {
-      title: "Interpretación 01: el viaje espiritual",
-      paragraphs: [
-        "Esta lectura organiza los tres álbumes como una secuencia: caída, tránsito y transformación. Los fans relacionan imágenes, letras y atmósferas con el imaginario de La divina comedia.",
-        "Desde Saussure, el sentido surge de las relaciones entre signos; desde Escandell Vidal, el lector usa conocimientos culturales previos para inferir la conexión con Dante. Es una interpretación posible, no una confirmación oficial de la intención del artista."
-      ]
+  const quizQuestions = [
+    {
+      category: "Saussure · Signos",
+      question: "Un fan ve una portada oscura y la relaciona con el infierno. ¿Qué permite construir esa interpretación?",
+      answers: [
+        "Que el color oscuro siempre significa infierno.",
+        "La relación entre la imagen, otros signos y sus conocimientos culturales.",
+        "Únicamente el significado literal del título del álbum.",
+        "Que todos los fans deben interpretar la portada igual."
+      ],
+      correct: 1,
+      explanation: "El sentido no es universal ni automático. La interpretación surge al relacionar los elementos visuales con otros signos y con conocimientos culturales, como la obra de Dante."
     },
-    covers: {
-      title: "Interpretación 02: las portadas como sistema",
-      paragraphs: [
-        "En esta lectura, el indicio central es la dirección de la mirada. El fan compara las portadas y les atribuye una progresión: hacia abajo, al frente y hacia arriba.",
-        "La comparación se relaciona con la idea saussureana de valor diferencial: cada imagen adquiere sentido al contrastarse con las otras. Sin embargo, la dirección de la mirada no tiene un significado universal; la lectura depende del contexto cultural y de la hipótesis que propone el usuario."
-      ]
+    {
+      category: "Jakobson · Funciones",
+      question: "Un usuario describe las portadas y señala hacia dónde mira The Weeknd. ¿Qué función del lenguaje predomina en esa descripción?",
+      answers: [
+        "Función fática: comprobar que el canal funciona.",
+        "Función conativa: ordenar que otros hagan algo.",
+        "Función referencial: aportar información sobre aquello de lo que se habla.",
+        "Función metalingüística: explicar el significado de una palabra."
+      ],
+      correct: 2,
+      explanation: "La función referencial predomina cuando el mensaje se centra en describir o aportar información sobre un tema, como las características de las portadas."
     },
-    cycle: {
-      title: "Interpretación 03: una historia abierta",
-      paragraphs: [
-        "Esta lectura cuestiona que el último álbum tenga que representar necesariamente el paraíso o un cierre definitivo. El fan puede encontrar continuidades, regresos o conflictos que conectan el disco final con los anteriores.",
-        "La pragmática permite observar cómo los participantes usan información compartida, hacen inferencias y discuten qué indicios son más relevantes. La interpretación se construye mediante argumentos y puede revisarse cuando otros usuarios aportan nuevas conexiones."
-      ]
+    {
+      category: "Pragmática · Contexto",
+      question: "Dos fans leen el mismo comentario, pero uno entiende una referencia a Dante y el otro no. ¿Cómo se explica desde la pragmática?",
+      answers: [
+        "Uno de los lectores necesariamente está leyendo mal.",
+        "Las palabras siempre tienen un solo sentido posible.",
+        "La interpretación depende también del contexto y de los conocimientos previos.",
+        "El contexto nunca afecta al significado."
+      ],
+      correct: 2,
+      explanation: "Para Escandell Vidal, interpretar implica considerar el contexto, los conocimientos compartidos y las inferencias. Por eso, dos lectores pueden construir interpretaciones diferentes."
+    },
+    {
+      category: "Corpus · After Hours",
+      question: "Un fan relaciona After Hours con el infierno por su atmósfera oscura y sus temas de sufrimiento. ¿Qué está haciendo?",
+      answers: [
+        "Está proponiendo una interpretación a partir de varios indicios.",
+        "Está demostrando definitivamente la intención oficial del artista.",
+        "Está usando solamente la función fática.",
+        "Está afirmando que la portada no puede tener otros sentidos."
+      ],
+      correct: 0,
+      explanation: "El fan selecciona indicios y los conecta para sostener una hipótesis. Esa lectura puede ser coherente, pero no prueba por sí sola cuál fue la intención original del artista."
+    },
+    {
+      category: "Saussure · Valor diferencial",
+      question: "¿Por qué un fan compara las tres portadas en lugar de analizar cada una por separado?",
+      answers: [
+        "Porque una imagen no puede comunicar ningún significado por sí sola.",
+        "Porque el valor de cada imagen puede construirse por sus diferencias y relaciones con las otras.",
+        "Porque las tres portadas son exactamente iguales.",
+        "Porque las imágenes solo se interpretan mediante palabras."
+      ],
+      correct: 1,
+      explanation: "La idea de valor diferencial permite analizar cómo un elemento adquiere sentido por contraste y relación con otros. La secuencia de las miradas resulta importante para la teoría."
+    },
+    {
+      category: "Interpretación · Debate",
+      question: "Un usuario cuestiona que Hurry Up Tomorrow cierre la historia con una salvación definitiva. ¿Qué muestra este desacuerdo?",
+      answers: [
+        "Que no se pueden analizar obras artísticas desde la lingüística.",
+        "Que la interpretación de una obra siempre es aleatoria.",
+        "Que una teoría de fans se convierte automáticamente en información oficial.",
+        "Que los participantes pueden seleccionar indicios distintos y discutir qué explicación resulta más convincente."
+      ],
+      correct: 3,
+      explanation: "Las comunidades digitales producen, discuten y revisan interpretaciones. Las propuestas pueden compararse según la evidencia que presentan y la coherencia de sus argumentos."
     }
-  };
+  ];
 
-  choiceButtons.forEach(function(button) {
-    button.addEventListener("click", function() {
-      const selected = button.dataset.choice;
-      const interpretation = interpretations[selected];
+  const quizWelcome = document.getElementById("quizWelcome");
+  const quizGame = document.getElementById("quizGame");
+  const quizFinal = document.getElementById("quizFinal");
+  const startQuiz = document.getElementById("startQuiz");
+  const restartQuiz = document.getElementById("restartQuiz");
 
-      if (!interpretation) return;
+  const quizCounter = document.getElementById("quizCounter");
+  const quizScore = document.getElementById("quizScore");
+  const quizProgress = document.getElementById("quizProgress");
+  const quizProgressFill = document.getElementById("quizProgressFill");
+  const quizCategory = document.getElementById("quizCategory");
+  const quizQuestion = document.getElementById("quizQuestion");
+  const quizAnswers = document.getElementById("quizAnswers");
+  const quizFeedback = document.getElementById("quizFeedback");
+  const feedbackTitle = document.getElementById("feedbackTitle");
+  const feedbackText = document.getElementById("feedbackText");
+  const quizHint = document.getElementById("quizHint");
+  const nextQuestion = document.getElementById("nextQuestion");
 
-      choiceButtons.forEach(function(item) {
-        item.setAttribute("aria-pressed", String(item === button));
-      });
+  const finalTitle = document.getElementById("finalTitle");
+  const finalMessage = document.getElementById("finalMessage");
+  const finalScore = document.getElementById("finalScore");
+  const finalDetail = document.getElementById("finalDetail");
 
-      resultTitle.textContent = interpretation.title;
-      resultText.replaceChildren();
+  let currentQuestion = 0;
+  let score = 0;
+  let answered = false;
 
-      interpretation.paragraphs.forEach(function(paragraph) {
-        const p = document.createElement("p");
-        p.textContent = paragraph;
-        resultText.appendChild(p);
-      });
+  function startNewQuiz() {
+    currentQuestion = 0;
+    score = 0;
+    answered = false;
 
-      interactionResult.classList.add("visible");
+    quizWelcome.hidden = true;
+    quizFinal.classList.remove("visible");
+    quizGame.hidden = false;
 
-      requestAnimationFrame(function() {
-        interactionResult.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-      });
-    });
-  });
+    renderQuestion();
 
-  resetChoice.addEventListener("click", function() {
-    choiceButtons.forEach(function(button) {
-      button.setAttribute("aria-pressed", "false");
-    });
-
-    interactionResult.classList.remove("visible");
-    resultText.replaceChildren();
-
-    document.querySelector("#interactivo h2").scrollIntoView({
+    document.getElementById("interactivo").scrollIntoView({
       behavior: "smooth",
       block: "start"
     });
+  }
+
+  function renderQuestion() {
+    const question = quizQuestions[currentQuestion];
+    answered = false;
+
+    quizCounter.textContent =
+      "Pregunta " + (currentQuestion + 1) + " de " + quizQuestions.length;
+
+    quizScore.textContent = "Puntaje: " + score;
+    quizCategory.textContent = question.category;
+    quizQuestion.textContent = question.question;
+
+    quizProgress.setAttribute("aria-valuenow", String(currentQuestion));
+    quizProgressFill.style.width =
+      (currentQuestion / quizQuestions.length * 100) + "%";
+
+    quizAnswers.replaceChildren();
+    quizFeedback.classList.remove("visible", "wrong");
+    feedbackTitle.textContent = "";
+    feedbackText.textContent = "";
+    quizHint.textContent = "Elegí una respuesta para continuar.";
+    nextQuestion.disabled = true;
+    nextQuestion.textContent =
+      currentQuestion === quizQuestions.length - 1
+        ? "Ver resultado →"
+        : "Siguiente →";
+
+    const letters = ["A", "B", "C", "D"];
+
+    question.answers.forEach(function(answer, index) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "quiz-answer";
+
+      const letter = document.createElement("span");
+      letter.className = "answer-letter";
+      letter.textContent = letters[index];
+
+      button.appendChild(letter);
+      button.appendChild(document.createTextNode(answer));
+
+      button.addEventListener("click", function() {
+        selectAnswer(index);
+      });
+
+      quizAnswers.appendChild(button);
+    });
+  }
+
+  function selectAnswer(selectedIndex) {
+    if (answered) return;
+
+    answered = true;
+
+    const question = quizQuestions[currentQuestion];
+    const answerButtons = Array.from(
+      quizAnswers.querySelectorAll(".quiz-answer")
+    );
+
+    answerButtons.forEach(function(button, index) {
+      button.disabled = true;
+
+      if (index === question.correct) {
+        button.classList.add("correct");
+      }
+
+      if (index === selectedIndex && index !== question.correct) {
+        button.classList.add("incorrect");
+      }
+    });
+
+    if (selectedIndex === question.correct) {
+      score += 100;
+      feedbackTitle.textContent = "¡Correcto! +100 puntos";
+      quizFeedback.classList.remove("wrong");
+      quizHint.textContent = "Respuesta correcta.";
+    } else {
+      feedbackTitle.textContent = "No exactamente. ¡Seguimos aprendiendo!";
+      quizFeedback.classList.add("wrong");
+      quizHint.textContent = "Revisá la explicación antes de seguir.";
+    }
+
+    feedbackText.textContent = question.explanation;
+    quizFeedback.classList.add("visible");
+    quizScore.textContent = "Puntaje: " + score;
+
+    quizProgress.setAttribute("aria-valuenow", String(currentQuestion + 1));
+    quizProgressFill.style.width =
+      ((currentQuestion + 1) / quizQuestions.length * 100) + "%";
+
+    nextQuestion.disabled = false;
+  }
+
+  function showFinalResult() {
+    quizGame.hidden = true;
+    quizFinal.classList.add("visible");
+
+    finalScore.textContent = score + " / 600";
+
+    const correctAnswers = score / 100;
+
+    if (correctAnswers === 6) {
+      finalTitle.textContent = "¡Maestría lingüística!";
+      finalMessage.textContent =
+        "Descifraste todas las pistas. Reconocés cómo se relacionan los signos, el contexto y las funciones del lenguaje.";
+    } else if (correctAnswers >= 4) {
+      finalTitle.textContent = "¡Buen trabajo!";
+      finalMessage.textContent =
+        "Tenés una buena base para analizar las teorías de los fans. Repasá las explicaciones de las preguntas que te costaron.";
+    } else if (correctAnswers >= 2) {
+      finalTitle.textContent = "¡Vas por buen camino!";
+      finalMessage.textContent =
+        "Ya identificaste algunas claves. Volvé a las secciones de autores y teorías y probá el desafío otra vez.";
+    } else {
+      finalTitle.textContent = "¡Misión de entrenamiento!";
+      finalMessage.textContent =
+        "Este primer intento te sirve para reconocer qué conceptos necesitás repasar. Podés volver a leer la página y jugar otra vez.";
+    }
+
+    finalDetail.textContent =
+      "Respondiste correctamente " + correctAnswers + " de " +
+      quizQuestions.length + " preguntas.";
+
+    quizFinal.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+  }
+
+  startQuiz.addEventListener("click", startNewQuiz);
+  restartQuiz.addEventListener("click", startNewQuiz);
+
+  nextQuestion.addEventListener("click", function() {
+    if (!answered) return;
+
+    if (currentQuestion < quizQuestions.length - 1) {
+      currentQuestion++;
+      renderQuestion();
+
+      quizGame.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    } else {
+      showFinalResult();
+    }
   });
 
-  // NAVEGACIÓN POR PANTALLAS
+  // =====================================================
+  // NAVEGACIÓN: UNA SECCIÓN PRINCIPAL VISIBLE POR VEZ
+  // =====================================================
+
   const mainSections = Array.from(
     document.querySelectorAll("main > section")
   );
@@ -1472,17 +1719,14 @@
   ) {
     if (!section) return;
 
-    // Ocultar todas las secciones principales.
     mainSections.forEach(function(item) {
       item.classList.remove("view-active");
     });
 
-    // Mostrar la sección seleccionada.
     section.classList.add("view-active");
 
     let selectedTheory = null;
 
-    // Si estamos en Teorías, mostrar solo la teoría elegida.
     if (section === theoriesSection) {
       theoryCards.forEach(function(theory) {
         theory.classList.remove("theory-active");
@@ -1495,7 +1739,6 @@
       }
     }
 
-    // Mantener la URL sincronizada con la pantalla visible.
     let newHash;
 
     if (hashTarget) {
@@ -1510,18 +1753,18 @@
       history.pushState(null, "", newHash);
     }
 
-    // Desplazarse al contenido recién abierto.
     if (shouldScroll) {
       requestAnimationFrame(function() {
         requestAnimationFrame(function() {
-          // Si se seleccionó un álbum, ir a su teoría exacta.
-          // Si se eligió "Teorías" en el menú, ir al comienzo de la sección.
-          const destination =
+          let destination = section;
+
+          if (
             section === theoriesSection &&
             selectedTheory &&
             hashTarget !== "teorias"
-              ? selectedTheory
-              : section;
+          ) {
+            destination = selectedTheory;
+          }
 
           destination.scrollIntoView({
             behavior: "smooth",
@@ -1535,7 +1778,6 @@
   function navigateToHash(hash, shouldScroll = true) {
     const targetId = (hash || "#inicio").slice(1);
 
-    // Volver a la portada.
     if (targetId === "inicio" || !targetId) {
       showSection(heroSection, null, shouldScroll, "inicio");
       return;
@@ -1548,20 +1790,16 @@
       return;
     }
 
-    // Los enlaces de los cuadros de álbumes apuntan a estas teorías.
     if (target.classList.contains("theory")) {
       showSection(theoriesSection, target, shouldScroll, targetId);
       return;
     }
 
-    // El enlace general "Teorías" muestra la primera teoría,
-    // pero lleva la pantalla al título de la sección.
     if (targetId === "teorias") {
       showSection(theoriesSection, theoryCards[0], shouldScroll, "teorias");
       return;
     }
 
-    // Mostrar la sección correspondiente al enlace elegido.
     const section = target.closest("main > section");
 
     if (section) {
@@ -1574,7 +1812,6 @@
     }
   }
 
-  // Interceptar los enlaces internos del sitio.
   document.addEventListener("click", function(event) {
     const link = event.target.closest('a[href^="#"]');
 
@@ -1585,22 +1822,23 @@
     if (!hash || hash === "#") return;
 
     event.preventDefault();
-    navigateToHash(hash);
+    navigateToHash(hash, true);
   });
 
-  // Permitir el funcionamiento de Atrás y Adelante del navegador.
   window.addEventListener("popstate", function() {
     navigateToHash(window.location.hash, true);
   });
 
-  // Abrir la sección indicada en la URL o mostrar la portada.
   if (window.location.hash && window.location.hash !== "#inicio") {
-    navigateToHash(window.location.hash, false);
+    navigateToHash(window.location.hash, true);
   } else {
     showSection(heroSection, null, false, "inicio");
   }
 
+  // =====================================================
   // BUSCADOR DE CONCEPTOS Y CONTENIDO
+  // =====================================================
+
   const searchForm = document.getElementById("searchForm");
   const searchInput = document.getElementById("searchInput");
   const searchMessage = document.getElementById("searchMessage");
@@ -1653,7 +1891,6 @@
         }
       }
 
-      // Esperar a que la sección esté visible y desplazarse al resultado.
       requestAnimationFrame(function() {
         requestAnimationFrame(function() {
           match.scrollIntoView({
@@ -1673,7 +1910,6 @@
     }
   });
 
-  // CERRAR EL AVISO DEL BUSCADOR AL CAMBIAR LA BÚSQUEDA
   searchInput.addEventListener("input", function() {
     searchMessage.classList.remove("visible");
   });
