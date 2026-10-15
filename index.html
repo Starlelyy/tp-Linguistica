@@ -1,23 +1,15 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Entre el infierno y el paraíso | The Weeknd</title>
-
-  <meta
-    name="description"
-    content="Un análisis lingüístico de cómo los fans construyen significados e interpretaciones sobre la trilogía de The Weeknd."
-  >
+  <meta name="description" content="Análisis lingüístico de las interpretaciones de los fans sobre la trilogía de The Weeknd, a partir de Saussure, Jakobson y Escandell Vidal.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  >
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -29,54 +21,36 @@
       --cream: #f5f2eb;
       --white: #ffffff;
       --muted: #b8c9d0;
-      --line: rgba(255, 255, 255, 0.15);
-      --panel: rgba(255, 255, 255, 0.055);
+      --line: rgba(255,255,255,.15);
+      --panel: rgba(255,255,255,.055);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 90px;
+      scroll-padding-top: 35px;
     }
 
     body {
       background: var(--dark);
       color: var(--cream);
       font-family: "DM Sans", sans-serif;
-      line-height: 1.7;
+      line-height: 1.75;
       overflow-x: hidden;
     }
 
-    a {
-      color: inherit;
-    }
+    a { color: inherit; }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
 
-    button,
-    input {
-      font: inherit;
-    }
-
-    button {
-      cursor: pointer;
-    }
-
-    .page {
-      width: min(1180px, 92%);
-      margin: 0 auto;
-    }
-
-    /* HEADER */
+    .page { width: min(1180px, 92%); margin: 0 auto; }
 
     header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 25px;
+      gap: 22px;
       padding: 24px 0;
       border-bottom: 1px solid var(--line);
     }
@@ -84,157 +58,106 @@
     .logo {
       color: var(--mint);
       text-decoration: none;
-      font-size: 0.9rem;
+      font-size: .85rem;
       font-weight: 700;
-      letter-spacing: 0.15em;
+      letter-spacing: .13em;
       text-transform: uppercase;
       white-space: nowrap;
     }
 
-    .menu {
-      display: flex;
-      align-items: center;
-      gap: 22px;
-      flex-wrap: wrap;
-    }
+    .menu { display: flex; gap: 18px; flex-wrap: wrap; }
 
     .menu a {
       color: var(--muted);
-      font-size: 0.77rem;
+      font-size: .73rem;
       text-decoration: none;
       text-transform: uppercase;
-      letter-spacing: 0.09em;
-      transition: color 0.2s ease;
+      letter-spacing: .07em;
     }
 
-    .menu a:hover {
-      color: var(--mint);
-    }
+    .menu a:hover, .menu a:focus { color: var(--mint); }
 
-    .search {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
+    .search { display: flex; gap: 7px; }
     .search input {
-      width: 150px;
+      width: 145px;
       min-width: 0;
-      padding: 9px 11px;
+      padding: 8px 10px;
       color: var(--cream);
       background: transparent;
       border: 1px solid var(--line);
       border-radius: 3px;
-      outline: none;
-    }
-
-    .search input:focus {
-      border-color: var(--mint);
     }
 
     .search button {
-      padding: 9px 12px;
+      padding: 8px 10px;
       color: var(--dark);
       background: var(--mint);
-      border: none;
+      border: 0;
       border-radius: 3px;
       font-weight: 700;
     }
 
-    /* HERO */
-
     .hero {
-      min-height: 600px;
+      min-height: 570px;
       display: grid;
-      grid-template-columns: 1fr 0.95fr;
+      grid-template-columns: 1fr .95fr;
       align-items: center;
-      gap: 40px;
-      padding: 65px 0 80px;
-      position: relative;
+      gap: 35px;
+      padding: 55px 0 75px;
     }
 
-    .hero-copy {
-      position: relative;
-      z-index: 2;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      margin-bottom: 20px;
+    .hero-copy { position: relative; z-index: 2; }
+    .eyebrow, .section-number {
+      display: block;
+      margin-bottom: 15px;
       color: var(--mint);
-      font-size: 0.75rem;
+      font-size: .73rem;
       font-weight: 700;
-      letter-spacing: 0.18em;
+      letter-spacing: .16em;
       text-transform: uppercase;
     }
 
-    h1,
-    h2,
-    h3 {
+    h1, h2, h3 {
       font-family: "Playfair Display", serif;
       font-weight: 500;
-      line-height: 1.15;
+      line-height: 1.2;
     }
 
     h1 {
       max-width: 680px;
-      font-size: clamp(2.8rem, 6vw, 5.8rem);
-      letter-spacing: -0.045em;
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      letter-spacing: -.04em;
     }
 
-    h1 span {
-      color: var(--red);
-      font-style: italic;
-    }
+    h1 span { color: var(--red); font-style: italic; }
 
     .hero-copy p {
       max-width: 570px;
-      margin-top: 25px;
+      margin-top: 22px;
       color: var(--muted);
-      font-size: 1rem;
     }
 
-    .hero-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 30px;
-    }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
 
     .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 12px 19px;
+      padding: 11px 17px;
       border: 1px solid var(--mint);
       border-radius: 3px;
       background: var(--mint);
       color: var(--dark);
-      font-size: 0.8rem;
+      font-size: .8rem;
       font-weight: 700;
       text-decoration: none;
-      transition: transform 0.2s ease, background 0.2s ease;
+      transition: transform .2s;
     }
 
-    .button:hover {
-      transform: translateY(-2px);
-    }
+    .button:hover { transform: translateY(-2px); }
+    .button.secondary { color: var(--cream); background: transparent; border-color: var(--line); }
 
-    .button.secondary {
-      color: var(--cream);
-      background: transparent;
-      border-color: var(--line);
-    }
-
-    .artwork {
-      position: relative;
-      min-height: 460px;
-      height: 100%;
-      overflow: hidden;
-    }
-
-    /* CÍRCULO ROJO DETRÁS DE LA IMAGEN */
-
+    .artwork { position: relative; min-height: 430px; overflow: hidden; }
     .red-circle {
       position: absolute;
       z-index: 0;
@@ -265,106 +188,48 @@
       right: 0;
       bottom: 15px;
       color: var(--cream);
-      font-size: 0.68rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
+      font-size: .65rem;
+      letter-spacing: .12em;
       writing-mode: vertical-rl;
     }
 
-    /* GENERAL */
+    section { padding: 70px 0; border-top: 1px solid var(--line); }
+    .section-heading { max-width: 800px; margin-bottom: 35px; }
+    .section-heading h2 { margin-bottom: 15px; font-size: clamp(2rem, 4vw, 3.4rem); }
+    .section-heading p { color: var(--muted); }
+    .section-number { color: var(--red); }
+    .accent { color: var(--mint); }
 
-    section {
-      padding: 75px 0;
-      border-top: 1px solid var(--line);
-    }
+    .body-copy { max-width: 850px; color: #d4dfe2; }
+    .body-copy p + p { margin-top: 17px; }
 
-    .section-heading {
-      max-width: 760px;
-      margin-bottom: 38px;
-    }
-
-    .section-heading h2 {
-      margin-bottom: 17px;
-      font-size: clamp(2.1rem, 4vw, 3.6rem);
-    }
-
-    .section-heading p {
-      color: var(--muted);
-    }
-
-    .section-number {
-      display: block;
-      margin-bottom: 13px;
-      color: var(--red);
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-    }
-
-    .accent {
-      color: var(--mint);
-    }
-
-    .body-copy {
-      max-width: 850px;
-      color: #d4dfe2;
-    }
-
-    .body-copy p + p {
-      margin-top: 18px;
-    }
-
-    /* CONTEXTO */
-
-    .intro-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 40px;
-      align-items: start;
-    }
+    .intro-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 35px; align-items: start; }
 
     .note {
-      padding: 25px;
+      padding: 24px;
       background: var(--panel);
       border-left: 3px solid var(--green);
     }
 
-    .note h3 {
-      margin-bottom: 12px;
-      font-size: 1.4rem;
-    }
+    .note h3 { margin-bottom: 10px; font-size: 1.4rem; }
+    .note p { color: var(--muted); font-size: .92rem; }
 
-    .note p {
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    /* ALBUMES */
-
-    .album-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
+    .album-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px; }
 
     .album-card {
-      position: relative;
-      min-height: 260px;
-      padding: 25px;
+      min-height: 275px;
+      padding: 24px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      position: relative;
+      overflow: hidden;
       border: 1px solid var(--line);
       background: var(--panel);
-      overflow: hidden;
-      transition: transform 0.25s ease, border-color 0.25s ease;
+      transition: transform .2s, border-color .2s;
     }
 
-    .album-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--mint);
-    }
+    .album-card:hover { transform: translateY(-4px); border-color: var(--mint); }
 
     .album-card::before {
       content: "";
@@ -375,212 +240,100 @@
       height: 170px;
       border-radius: 50%;
       background: var(--card-color, var(--red));
-      opacity: 0.14;
+      opacity: .14;
     }
 
-    .album-card > * {
-      position: relative;
-      z-index: 1;
-    }
+    .album-card > * { position: relative; z-index: 1; }
+    .year { color: var(--muted); font-size: .72rem; letter-spacing: .12em; }
+    .album-card h3 { margin: 16px 0 10px; font-size: 1.7rem; }
+    .album-card p { color: var(--muted); font-size: .9rem; }
+    .album-card a { display: inline-block; margin-top: 18px; color: var(--mint); font-size: .82rem; text-decoration: none; }
+    .album-card a:hover { text-decoration: underline; }
 
-    .album-card .year {
-      color: var(--muted);
-      font-size: 0.75rem;
-      letter-spacing: 0.13em;
-    }
-
-    .album-card h3 {
-      margin: 18px 0 12px;
-      font-size: 1.8rem;
-    }
-
-    .album-card p {
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    .album-card a {
-      display: inline-block;
-      margin-top: 20px;
-      color: var(--mint);
-      font-size: 0.8rem;
-      text-decoration: none;
-    }
-
-    /* TEORÍAS */
-
-    .theory-list {
-      display: grid;
-      gap: 24px;
-    }
+    .theory-list { display: grid; gap: 24px; }
 
     .theory {
       display: grid;
-      grid-template-columns: 75px 1fr;
-      gap: 25px;
+      grid-template-columns: 65px 1fr;
+      gap: 23px;
       padding: 30px;
       border: 1px solid var(--line);
       background: var(--panel);
+      scroll-margin-top: 25px;
     }
 
-    .theory-number {
-      color: var(--red);
-      font-family: "Playfair Display", serif;
-      font-size: 2.7rem;
-      line-height: 1;
-    }
-
-    .theory h3 {
-      margin-bottom: 14px;
-      font-size: 1.75rem;
-    }
-
-    .theory p {
-      color: #d4dfe2;
-    }
-
-    .theory p + p {
-      margin-top: 14px;
-    }
+    .theory-number { color: var(--red); font-family: "Playfair Display", serif; font-size: 2.6rem; line-height: 1; }
+    .theory h3 { margin-bottom: 15px; font-size: 1.7rem; }
+    .theory p { color: #d4dfe2; }
+    .theory p + p { margin-top: 14px; }
+    .theory h4 { margin: 23px 0 8px; color: var(--mint); font-size: 1rem; }
+    .theory ul { margin: 10px 0 10px 22px; color: #d4dfe2; }
+    .theory li { margin: 6px 0; }
 
     .reddit-fragment {
       margin-top: 22px;
       padding: 20px;
-      background: rgba(10, 48, 74, 0.72);
+      background: rgba(10,48,74,.72);
       border-left: 3px solid var(--red);
     }
 
-    .reddit-fragment .source-label {
+    .source-label {
       display: block;
       margin-bottom: 10px;
       color: var(--mint);
-      font-size: 0.7rem;
+      font-size: .68rem;
       font-weight: 700;
-      letter-spacing: 0.12em;
+      letter-spacing: .12em;
       text-transform: uppercase;
     }
 
     .reddit-fragment blockquote {
       color: var(--cream);
       font-family: "Playfair Display", serif;
-      font-size: 1.12rem;
+      font-size: 1.1rem;
       line-height: 1.55;
     }
 
-    .reddit-fragment p {
-      margin-top: 12px;
-      color: var(--muted);
-      font-size: 0.85rem;
-    }
+    .reddit-fragment p { margin-top: 12px; color: var(--muted); font-size: .86rem; }
 
     .source-link {
       display: inline-block;
       margin-top: 12px;
       color: var(--mint);
-      font-size: 0.85rem;
+      font-size: .85rem;
       text-decoration: underline;
       text-underline-offset: 4px;
+      overflow-wrap: anywhere;
     }
 
     .warning-note {
       margin-top: 25px;
       padding: 18px 20px;
       color: var(--muted);
-      background: rgba(241, 38, 19, 0.08);
-      border: 1px solid rgba(241, 38, 19, 0.3);
-      font-size: 0.9rem;
+      background: rgba(241,38,19,.08);
+      border: 1px solid rgba(241,38,19,.3);
+      font-size: .9rem;
     }
 
-    /* AUTORES */
+    .concept-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 18px; }
+    .concept-card { padding: 24px; border-top: 3px solid var(--green); background: var(--panel); }
+    .concept-card:nth-child(2) { border-top-color: var(--red); }
+    .concept-card:nth-child(3) { border-top-color: var(--mint); }
+    .author { display: block; margin-bottom: 10px; color: var(--mint); font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    .concept-card h3 { margin-bottom: 13px; font-size: 1.5rem; }
+    .concept-card p { color: var(--muted); font-size: .91rem; }
+    .concept-card p + p { margin-top: 12px; }
 
-    .concept-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
+    .subheading { margin: 40px 0 18px; font-size: 1.7rem; }
+    .analysis-text { max-width: 900px; color: #d4dfe2; }
+    .analysis-text p + p { margin-top: 16px; }
 
-    .concept-card {
-      padding: 25px;
-      border-top: 3px solid var(--green);
-      background: var(--panel);
-    }
+    .interactive-panel { padding: clamp(24px,5vw,48px); background: var(--cream); color: var(--dark); }
+    .interactive-panel .section-number { color: #b91c0c; }
+    .interactive-panel h2 { max-width: 750px; margin-bottom: 14px; font-size: clamp(2rem,4vw,3.1rem); }
+    .interactive-panel > p { max-width: 780px; color: #40535b; }
 
-    .concept-card:nth-child(2) {
-      border-top-color: var(--red);
-    }
-
-    .concept-card:nth-child(3) {
-      border-top-color: var(--mint);
-    }
-
-    .concept-card .author {
-      display: block;
-      margin-bottom: 10px;
-      color: var(--mint);
-      font-size: 0.73rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .concept-card h3 {
-      margin-bottom: 15px;
-      font-size: 1.6rem;
-    }
-
-    .concept-card p {
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    .concept-card p + p {
-      margin-top: 13px;
-    }
-
-    .subheading {
-      margin: 45px 0 20px;
-      font-size: 1.75rem;
-    }
-
-    .analysis-text {
-      max-width: 900px;
-      color: #d4dfe2;
-    }
-
-    .analysis-text p + p {
-      margin-top: 17px;
-    }
-
-    /* INTERACTIVO */
-
-    .interactive-panel {
-      padding: clamp(25px, 5vw, 50px);
-      background: var(--cream);
-      color: var(--dark);
-    }
-
-    .interactive-panel .section-number {
-      color: #b91c0c;
-    }
-
-    .interactive-panel h2 {
-      max-width: 750px;
-      margin-bottom: 15px;
-      font-size: clamp(2rem, 4vw, 3.2rem);
-    }
-
-    .interactive-panel > p {
-      max-width: 780px;
-      color: #40535b;
-    }
-
-    .choice-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 30px;
-    }
-
+    .choice-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 14px; margin-top: 28px; }
     .choice {
       min-height: 170px;
       padding: 20px;
@@ -589,183 +342,52 @@
       background: white;
       border: 2px solid #d7dedb;
       border-radius: 3px;
-      transition: border-color 0.2s ease, transform 0.2s ease;
+      transition: border-color .2s, transform .2s;
     }
 
-    .choice:hover {
-      transform: translateY(-3px);
-      border-color: var(--green);
-    }
-
-    .choice[aria-pressed="true"] {
-      border-color: var(--red);
-      background: #fff3f1;
-    }
-
-    .choice .choice-number {
-      display: block;
-      margin-bottom: 12px;
-      color: #b91c0c;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-    }
-
-    .choice strong {
-      display: block;
-      margin-bottom: 8px;
-      font-family: "Playfair Display", serif;
-      font-size: 1.25rem;
-      line-height: 1.25;
-    }
-
-    .choice span:last-child {
-      color: #52636a;
-      font-size: 0.86rem;
-    }
+    .choice:hover { transform: translateY(-3px); border-color: var(--green); }
+    .choice[aria-pressed="true"] { border-color: var(--red); background: #fff3f1; }
+    .choice-number { display: block; margin-bottom: 12px; color: #b91c0c; font-size: .7rem; font-weight: 700; letter-spacing: .1em; }
+    .choice strong { display: block; margin-bottom: 8px; font-family: "Playfair Display",serif; font-size: 1.2rem; line-height: 1.25; }
+    .choice span:last-child { color: #52636a; font-size: .86rem; }
 
     .interaction-result {
       display: none;
       margin-top: 24px;
-      padding: 25px;
+      padding: 24px;
       color: var(--cream);
       background: var(--dark);
       border-left: 4px solid var(--red);
     }
 
-    .interaction-result.visible {
-      display: block;
-    }
+    .interaction-result.visible { display: block; }
+    .interaction-result h3 { margin-bottom: 12px; color: var(--mint); font-size: 1.5rem; }
+    .interaction-result p { color: #d4dfe2; }
+    .interaction-result p + p { margin-top: 12px; }
 
-    .interaction-result h3 {
-      margin-bottom: 12px;
-      color: var(--mint);
-      font-size: 1.55rem;
-    }
+    .reset-choice { margin-top: 18px; padding: 9px 13px; color: var(--dark); background: var(--mint); border: none; border-radius: 3px; font-size: .8rem; font-weight: 700; }
 
-    .interaction-result p {
-      color: #d4dfe2;
-    }
+    .media-grid { display: grid; grid-template-columns: 1fr .8fr; gap: 32px; align-items: start; }
+    .video-frame { width: 100%; aspect-ratio: 16/9; border: 1px solid var(--line); background: #000; }
+    .video-frame iframe { display: block; width: 100%; height: 100%; border: 0; }
+    .media-copy h3 { margin-bottom: 14px; font-size: 1.7rem; }
+    .media-copy p { color: var(--muted); }
+    .media-copy p + p { margin-top: 14px; }
 
-    .interaction-result p + p {
-      margin-top: 12px;
-    }
+    .conclusion { padding: 28px; background: var(--panel); border-left: 3px solid var(--mint); }
+    .conclusion p { color: #d4dfe2; }
+    .conclusion p + p { margin-top: 14px; }
 
-    .reset-choice {
-      margin-top: 18px;
-      padding: 9px 13px;
-      color: var(--dark);
-      background: var(--mint);
-      border: none;
-      border-radius: 3px;
-      font-size: 0.8rem;
-      font-weight: 700;
-    }
+    .sources-list { display: grid; gap: 16px; margin: 24px 0 0 20px; color: var(--muted); }
+    .sources-list li { padding-left: 5px; }
+    .sources-list a { color: var(--mint); overflow-wrap: anywhere; }
+    .sources-list p { margin-top: 4px; }
 
-    /* MULTIMEDIA */
+    .tags { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 25px; }
+    .tag { padding: 6px 10px; color: var(--mint); border: 1px solid rgba(164,234,212,.35); border-radius: 30px; font-size: .73rem; }
 
-    .media-grid {
-      display: grid;
-      grid-template-columns: 1fr 0.8fr;
-      gap: 35px;
-      align-items: start;
-    }
-
-    .video-frame {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      border: 1px solid var(--line);
-      background: #000;
-    }
-
-    .video-frame iframe {
-      display: block;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-
-    .media-copy h3 {
-      margin-bottom: 15px;
-      font-size: 1.8rem;
-    }
-
-    .media-copy p {
-      color: var(--muted);
-    }
-
-    .media-copy p + p {
-      margin-top: 15px;
-    }
-
-    /* CONCLUSIÓN Y FUENTES */
-
-    .conclusion {
-      padding: 30px;
-      background: var(--panel);
-      border-left: 3px solid var(--mint);
-    }
-
-    .conclusion p {
-      color: #d4dfe2;
-    }
-
-    .conclusion p + p {
-      margin-top: 15px;
-    }
-
-    .sources-list {
-      display: grid;
-      gap: 14px;
-      margin-top: 25px;
-      padding-left: 20px;
-      color: var(--muted);
-    }
-
-    .sources-list a {
-      color: var(--mint);
-      overflow-wrap: anywhere;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
-      margin-top: 28px;
-    }
-
-    .tag {
-      padding: 7px 11px;
-      color: var(--mint);
-      border: 1px solid rgba(164, 234, 212, 0.35);
-      border-radius: 30px;
-      font-size: 0.75rem;
-    }
-
-    /* FOOTER */
-
-    footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 30px 0 40px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 0.78rem;
-    }
-
-    footer a {
-      color: var(--mint);
-      text-decoration: none;
-    }
-
-    .back-top {
-      color: var(--mint);
-      text-decoration: none;
-    }
-
-    /* BUSCADOR */
+    footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 30px 0 40px; border-top: 1px solid var(--line); color: var(--muted); font-size: .78rem; }
+    footer a { color: var(--mint); text-decoration: none; }
 
     .search-message {
       display: none;
@@ -773,380 +395,963 @@
       right: 20px;
       bottom: 20px;
       z-index: 20;
-      max-width: 330px;
+      max-width: 350px;
       padding: 16px 20px;
       color: var(--cream);
       background: var(--blue);
       border: 1px solid var(--mint);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
     }
 
-    .search-message.visible {
-      display: block;
-    }
+    .search-message.visible { display: block; }
 
-    /* RESPONSIVE */
+    mark.search-highlight { color: var(--dark); background: var(--mint); padding: 1px 3px; }
 
     @media (max-width: 900px) {
-      header {
-        align-items: flex-start;
-        flex-wrap: wrap;
-      }
-
-      .menu {
-        order: 3;
-        width: 100%;
-        gap: 15px;
-      }
-
-      .hero {
-        grid-template-columns: 1fr 0.8fr;
-        gap: 15px;
-      }
-
-      .artwork {
-        min-height: 380px;
-      }
-
-      .intro-grid,
-      .media-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .concept-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .concept-card {
-        padding: 22px;
-      }
+      header { align-items: flex-start; flex-wrap: wrap; }
+      .menu { order: 3; width: 100%; gap: 12px 16px; }
+      .hero { grid-template-columns: 1fr .8fr; gap: 15px; }
+      .artwork { min-height: 360px; }
+      .intro-grid, .media-grid { grid-template-columns: 1fr; }
+      .concept-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 650px) {
-      .page {
-        width: min(100% - 32px, 520px);
-      }
-
-      header {
-        padding: 18px 0;
-      }
-
-      .search {
-        width: 100%;
-      }
-
-      .search input {
-        flex: 1;
-        width: auto;
-      }
-
-      .menu {
-        gap: 12px 16px;
-      }
-
-      .menu a {
-        font-size: 0.68rem;
-      }
-
-      .hero {
-        grid-template-columns: 1fr;
-        padding: 55px 0 45px;
-      }
-
-      .hero-copy {
-        order: 1;
-      }
-
-      .artwork {
-        order: 2;
-        min-height: 330px;
-        max-width: 440px;
-        width: 100%;
-        margin: 0 auto;
-      }
-
-      .red-circle {
-        width: 260px;
-        left: 17%;
-      }
-
-      .weeknd-photo {
-        width: 90%;
-        left: 5%;
-      }
-
-      section {
-        padding: 55px 0;
-      }
-
-      .album-grid,
-      .choice-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .album-card {
-        min-height: 210px;
-      }
-
-      .theory {
-        grid-template-columns: 1fr;
-        gap: 12px;
-        padding: 22px;
-      }
-
-      .theory-number {
-        font-size: 2rem;
-      }
-
-      .choice {
-        min-height: 130px;
-      }
-
-      footer {
-        align-items: flex-start;
-        flex-direction: column;
-      }
+      .page { width: min(100% - 32px, 520px); }
+      header { padding: 18px 0; }
+      .search { width: 100%; }
+      .search input { flex: 1; width: auto; }
+      .menu a { font-size: .66rem; }
+      .hero { grid-template-columns: 1fr; padding: 45px 0; }
+      .artwork { min-height: 320px; max-width: 440px; width: 100%; margin: 0 auto; }
+      .red-circle { width: 260px; left: 17%; }
+      section { padding: 50px 0; }
+      .album-grid, .choice-grid { grid-template-columns: 1fr; }
+      .album-card { min-height: 220px; }
+      .theory { grid-template-columns: 1fr; gap: 12px; padding: 22px; }
+      .theory-number { font-size: 2rem; }
+      .choice { min-height: 130px; }
+      footer { align-items: flex-start; flex-direction: column; }
     }
   </style>
 </head>
 
 <body>
-  <div class="page" id="inicio">
+<div class="page" id="inicio">
 
-    <header>
-      <a class="logo" href="#inicio">Lenguaje / XO</a>
+  <header>
+    <a class="logo" href="#inicio">Lenguaje / XO</a>
 
-      <nav class="menu" aria-label="Navegación principal">
-        <a href="#contexto">Contexto</a>
-        <a href="#teorias">Teorías</a>
-        <a href="#autores">Autores</a>
-        <a href="#interactivo">Interactivo</a>
-        <a href="#fuentes">Fuentes</a>
-      </nav>
+    <nav class="menu" aria-label="Navegación principal">
+      <a href="#contexto">Contexto</a>
+      <a href="#teorias">Teorías</a>
+      <a href="#autores">Autores</a>
+      <a href="#interactivo">Interactivo</a>
+      <a href="#multimedia">Multimedia</a>
+      <a href="#fuentes">Fuentes</a>
+    </nav>
 
-      <form class="search" id="searchForm" role="search">
-        <input
-          id="searchInput"
-          type="search"
-          placeholder="Buscar concepto..."
-          aria-label="Buscar una palabra en la página"
-        >
-        <button type="submit">Buscar</button>
-      </form>
-    </header>
+    <form class="search" id="searchForm" role="search">
+      <input id="searchInput" type="search" placeholder="Buscar concepto..." aria-label="Buscar una palabra en la página">
+      <button type="submit">Buscar</button>
+    </form>
+  </header>
 
-    <main>
+  <main>
 
-      <!-- PORTADA -->
+    <!-- PORTADA -->
+    <section class="hero" style="border-top:none" aria-labelledby="main-title">
+      <div class="hero-copy">
+        <span class="eyebrow">Lingüística · Signos · Interpretación</span>
+        <h1 id="main-title">Entre el <span>infierno</span> y el paraíso</h1>
+        <p>
+          ¿Cómo construyen los fans el significado de la trilogía de The Weeknd?
+          A través de letras, imágenes, videoclips y debates digitales, los
+          seguidores conectan signos y elaboran teorías para interpretar una
+          historia que no todos entienden de la misma manera.
+        </p>
+        <div class="hero-actions">
+          <a class="button" href="#teorias">Explorar las teorías</a>
+          <a class="button secondary" href="#interactivo">Probar la actividad</a>
+        </div>
+      </div>
 
-      <section class="hero" style="border-top: none;" aria-labelledby="main-title">
-        <div class="hero-copy">
-          <span class="eyebrow">Lingüística · Signos · Interpretación</span>
+      <div class="artwork" aria-label="Imagen de The Weeknd">
+        <div class="red-circle"></div>
+        <img src="./weeknd.png" alt="The Weeknd, imagen de portada del proyecto" class="weeknd-photo">
+        <span class="artwork-caption">After Hours · Dawn FM · Hurry Up Tomorrow</span>
+      </div>
+    </section>
 
-          <h1 id="main-title">
-            Entre el <span>infierno</span> y el paraíso
-          </h1>
+    <!-- CONTEXTO -->
+    <section id="contexto">
+      <div class="section-heading">
+        <span class="section-number">01 / Contexto</span>
+        <h2>Una historia que los fans <span class="accent">reconstruyen</span></h2>
+        <p>La trilogía funciona como punto de partida para estudiar cómo se produce el significado y cómo las comunidades digitales participan en esa construcción.</p>
+      </div>
 
+      <div class="intro-grid">
+        <div class="body-copy">
           <p>
-            ¿Cómo construyen los fans el significado de la trilogía de
-            The Weeknd? A través de letras, imágenes, videoclips y debates
-            digitales, los seguidores conectan signos y elaboran teorías
-            para interpretar una historia que no todos entienden de la
-            misma manera.
+            The Weeknd desarrolló una trilogía formada por <em>After Hours</em>
+            (2020), <em>Dawn FM</em> (2022) y <em>Hurry Up Tomorrow</em> (2025).
+            Sus letras, personajes, videoclips, portadas y atmósferas sonoras
+            ofrecen elementos que los seguidores relacionan para proponer una
+            continuidad narrativa.
           </p>
+          <p>
+            En comunidades digitales como Reddit, los fans publican hipótesis,
+            comparan portadas, recuperan fragmentos de canciones y discuten
+            qué lugar ocupa cada álbum dentro de la historia. Una de las
+            interpretaciones más difundidas relaciona los discos con el
+            recorrido de <em>La divina comedia</em> de Dante: infierno,
+            purgatorio y paraíso. Otras lecturas se concentran en las posturas
+            del artista en las portadas o cuestionan que el último álbum
+            represente una salvación definitiva.
+          </p>
+          <p>
+            El interés lingüístico no consiste en decidir cuál teoría es la
+            verdadera, sino en observar <strong>cómo se construyen, justifican
+            y discuten los significados</strong>. Los usuarios seleccionan
+            determinados indicios, los conectan con sus conocimientos previos
+            y presentan una interpretación para que otros la acepten,
+            discutan o modifiquen.
+          </p>
+          <p>
+            Las publicaciones analizadas constituyen discursos de fans: no
+            deben confundirse con declaraciones oficiales del artista. Las
+            hipótesis son valiosas para estudiar la producción de sentido,
+            aunque no demuestran por sí solas cuál fue la intención original
+            de The Weeknd.
+          </p>
+        </div>
 
-          <div class="hero-actions">
-            <a class="button" href="#teorias">Explorar las teorías</a>
-            <a class="button secondary" href="#interactivo">Probar la actividad</a>
+        <aside class="note">
+          <h3>Pregunta central</h3>
+          <p>Si todos observan las mismas portadas y escuchan los mismos álbumes, ¿por qué no llegan necesariamente a la misma interpretación?</p>
+          <br>
+          <p>Para responder, analizamos las relaciones entre los signos, las funciones del lenguaje y el contexto en el que los fans se comunican.</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ÁLBUMES -->
+    <section id="albumes">
+      <div class="section-heading">
+        <span class="section-number">02 / El corpus</span>
+        <h2>Tres álbumes, distintas lecturas</h2>
+        <p>Seleccioná cada álbum para ir directamente a la teoría que lo toma como parte central de su interpretación.</p>
+      </div>
+
+      <div class="album-grid">
+        <article class="album-card" style="--card-color:#f12613">
+          <div>
+            <span class="year">2020 · PRIMER ÁLBUM</span>
+            <h3>After Hours</h3>
+            <p>El sufrimiento, la culpa, la autodestrucción y la oscuridad se interpretan como indicios de un posible descenso al infierno.</p>
           </div>
-        </div>
+          <a href="#teoria1">Ver la teoría 01 →</a>
+        </article>
 
-        <div class="artwork" aria-label="Imagen de The Weeknd">
-          <div class="red-circle"></div>
+        <article class="album-card" style="--card-color:#12a984">
+          <div>
+            <span class="year">2022 · SEGUNDO ÁLBUM</span>
+            <h3>Dawn FM</h3>
+            <p>La radio, el tránsito y la revisión de la propia vida permiten proponer una lectura vinculada con el limbo o el purgatorio.</p>
+          </div>
+          <a href="#teoria2">Ver la teoría 02 →</a>
+        </article>
 
-          <img
-            src="./weeknd.png"
-            alt="The Weeknd, imagen de portada del proyecto"
-            class="weeknd-photo"
-          >
+        <article class="album-card" style="--card-color:#a4ead4">
+          <div>
+            <span class="year">2025 · TERCER ÁLBUM</span>
+            <h3>Hurry Up Tomorrow</h3>
+            <p>La transformación, la identidad y la posibilidad de escapar de una etapa anterior abren el debate sobre el cierre de la trilogía.</p>
+          </div>
+          <a href="#teoria3">Ver la teoría 03 →</a>
+        </article>
+      </div>
+    </section>
 
-          <span class="artwork-caption">After Hours · Dawn FM · Hurry Up Tomorrow</span>
-        </div>
-      </section>
+    <!-- TEORÍAS -->
+    <section id="teorias">
+      <div class="section-heading">
+        <span class="section-number">03 / El debate en Reddit</span>
+        <h2>Tres teorías para interpretar una misma obra</h2>
+        <p>
+          Cada publicación selecciona distintos signos y propone relaciones
+          entre ellos. Las teorías son interpretaciones de los fans, no
+          confirmaciones automáticas de la intención del artista.
+        </p>
+      </div>
 
-      <!-- CONTEXTO -->
+      <div class="theory-list">
 
-      <section id="contexto">
-        <div class="section-heading">
-          <span class="section-number">01 / Contexto</span>
-          <h2>Una historia que los fans <span class="accent">reconstruyen</span></h2>
-          <p>
-            La trilogía funciona como un punto de partida para interpretar
-            cómo se produce el significado y cómo las comunidades digitales
-            participan en esa construcción.
-          </p>
-        </div>
+        <!-- TEORÍA 1 -->
+        <article class="theory" id="teoria1">
+          <div class="theory-number">01</div>
+          <div>
+            <h3>La trilogía como un viaje espiritual: infierno, purgatorio y paraíso</h3>
 
-        <div class="intro-grid">
-          <div class="body-copy">
             <p>
-              The Weeknd desarrolló una trilogía formada por
-              <em>After Hours</em> (2020), <em>Dawn FM</em> (2022) y
-              <em>Hurry Up Tomorrow</em> (2025). Los discos presentan
-              imágenes, personajes, letras y referencias que los seguidores
-              relacionan para proponer una continuidad narrativa.
+              La primera teoría relaciona los tres álbumes con las etapas de
+              <em>La divina comedia</em>, obra de Dante Alighieri que presenta
+              un recorrido por el Infierno, el Purgatorio y el Paraíso. Desde
+              esta perspectiva, los discos pueden interpretarse como momentos
+              sucesivos de un viaje interior: caída, transición y posible
+              transformación.
             </p>
 
             <p>
-              En Reddit, los fans publican hipótesis, comparan portadas,
-              recuperan fragmentos de canciones y discuten qué lugar ocupa
-              cada álbum dentro de la historia. Algunas interpretaciones
-              vinculan la trilogía con el recorrido de
-              <em>La divina comedia</em> de Dante: infierno, purgatorio y
-              paraíso. Otras cuestionan que esa correspondencia sea tan
-              directa o sostienen que el último álbum no representa una
-              salvación definitiva.
+              En esta lectura, <em>After Hours</em> ocupa el lugar del infierno.
+              Los fans pueden relacionar su atmósfera oscura, las imágenes de
+              sufrimiento y la representación de conductas autodestructivas
+              con una situación de encierro emocional. El infierno no tiene
+              que entenderse literalmente: funciona como una imagen cultural
+              que permite expresar culpa, dolor o pérdida de control.
             </p>
 
             <p>
-              El interés lingüístico no consiste en decidir cuál teoría es
-              la verdadera, sino en observar <strong>cómo se construyen,
-              justifican y discuten los significados</strong>. Los usuarios
-              seleccionan signos diferentes, los conectan con conocimientos
-              previos y proponen una lectura para que otros la acepten,
-              discutan o modifiquen.
+              <em>Dawn FM</em> se interpreta como un estado intermedio, similar
+              al purgatorio o al limbo. La idea de una estación de radio que
+              acompaña al oyente durante una transición permite pensar el
+              álbum como un espacio de espera, revisión y cambio. El personaje
+              no estaría todavía en una resolución definitiva, sino atravesando
+              un proceso.
+            </p>
+
+            <p>
+              Finalmente, <em>Hurry Up Tomorrow</em> puede ser leído como una
+              posibilidad de transformación o salida. Sin embargo, esta
+              interpretación no obliga a entender el final como una salvación
+              completa: el título, las letras y las imágenes también pueden
+              sugerir ansiedad, incertidumbre o la dificultad de abandonar
+              una identidad anterior.
+            </p>
+
+            <h4>¿Qué signos relacionan los fans?</h4>
+            <ul>
+              <li>Las atmósferas sonoras y los tonos emocionales de los discos.</li>
+              <li>Las letras asociadas con culpa, dolor, cambio y búsqueda de sentido.</li>
+              <li>Las imágenes visuales y las referencias religiosas o espirituales.</li>
+              <li>El orden de publicación de los álbumes, interpretado como una secuencia narrativa.</li>
+            </ul>
+
+            <p>
+              La clave de esta teoría es que los signos se leen en conjunto.
+              Un color oscuro, por ejemplo, no significa automáticamente
+              “infierno”. Adquiere ese valor dentro de una red de relaciones
+              que incluye otros elementos del álbum y el conocimiento cultural
+              del fan sobre Dante.
+            </p>
+
+            <div class="reddit-fragment">
+              <span class="source-label">Publicación para consultar · Reddit</span>
+              <blockquote>
+                Teoría de fans que propone leer la trilogía mediante la
+                estructura de <em>La divina comedia</em>: Infierno,
+                Purgatorio y Paraíso.
+              </blockquote>
+              <p>
+                Esta formulación resume la hipótesis que se analiza; no debe
+                tomarse como una declaración oficial de The Weeknd.
+              </p>
+              <a class="source-link" href="https://www.reddit.com/r/TheWeeknd/comments/1fctl03/" target="_blank" rel="noopener noreferrer">Abrir la publicación en Reddit ↗</a>
+            </div>
+
+            <h4>Relación con Saussure</h4>
+            <p>
+              Desde Ferdinand de Saussure, un signo lingüístico se comprende
+              mediante la relación entre significante y significado. Aplicado
+              por analogía al análisis de imágenes, una portada presenta una
+              forma perceptible —colores, rostro, postura, composición— a la
+              que el espectador atribuye un concepto. La asociación entre un
+              disco y el “infierno” no está contenida naturalmente en una
+              imagen: surge de convenciones culturales y de las relaciones
+              que el intérprete establece con otros signos.
+            </p>
+
+            <h4>¿Qué demuestra esta teoría?</h4>
+            <p>
+              Demuestra cómo un fan organiza elementos dispersos en una
+              explicación coherente. No demuestra, por sí sola, que el artista
+              haya diseñado oficialmente los tres álbumes como una adaptación
+              exacta de Dante.
             </p>
           </div>
+        </article>
 
-          <aside class="note">
-            <h3>Pregunta central</h3>
+        <!-- TEORÍA 2 -->
+        <article class="theory" id="teoria2">
+          <div class="theory-number">02</div>
+          <div>
+            <h3>Las portadas como una secuencia: la dirección de la mirada</h3>
+
             <p>
-              Si todos observan las mismas portadas y escuchan los mismos
-              álbumes, ¿por qué no llegan necesariamente a la misma
-              interpretación?
+              Una segunda teoría se concentra en un detalle visual concreto:
+              la posición de la cabeza y la dirección de la mirada de The
+              Weeknd en las portadas de los tres álbumes. En lugar de tomar
+              como principal evidencia las letras o la atmósfera musical,
+              el usuario compara las imágenes y las interpreta como una
+              secuencia.
             </p>
-            <br>
+
             <p>
-              Para responder, analizamos las relaciones entre los signos,
-              las funciones del lenguaje y el contexto en el que los fans
-              se comunican.
+              Según la publicación, en la portada de <em>After Hours</em>
+              el artista mira hacia abajo. El fan relaciona esa dirección
+              con el descenso al infierno y con los motivos de sangre y rojo
+              que aparecen en la estética de esa etapa. En <em>Dawn FM</em>,
+              la mirada se dirige hacia el frente; esta posición se asocia
+              con un estado intermedio, en sintonía con la idea de limbo o
+              purgatorio. En <em>Hurry Up Tomorrow</em>, la mirada hacia
+              arriba se interpreta como una orientación hacia el cielo o
+              hacia una posible salvación.
             </p>
-          </aside>
-        </div>
-      </section>
 
-      <!-- TRILOGÍA -->
+            <p>
+              La teoría también toma en cuenta la vestimenta y la apariencia
+              del personaje. El fan interpreta esos elementos como indicios
+              de una lucha por alcanzar una transformación. Así, la lectura
+              no depende exclusivamente de la mirada, sino de cómo se
+              combina con otros detalles visuales y con la hipótesis previa
+              sobre Dante.
+            </p>
 
-      <section id="actos">
-        <div class="section-heading">
-          <span class="section-number">02 / El corpus</span>
-          <h2>Tres álbumes, distintas lecturas</h2>
+            <div class="reddit-fragment">
+              <span class="source-label">Fragmento de la publicación · Reddit</span>
+              <blockquote>
+                “In the After Hours cover, Abel is looking downwards”
+              </blockquote>
+              <p>
+                El autor de la publicación propone que la dirección de la
+                mirada es un indicio visual que puede conectarse con el
+                descenso al infierno. La publicación extiende la comparación
+                a las portadas de los otros dos álbumes.
+              </p>
+              <a class="source-link" href="https://www.reddit.com/r/TheWeeknd/comments/1g3006t/" target="_blank" rel="noopener noreferrer">Leer la teoría de las portadas en Reddit ↗</a>
+            </div>
+
+            <h4>¿Cómo se construye el sentido?</h4>
+            <p>
+              La dirección de una mirada es un elemento visual, no una
+              palabra. Sin embargo, puede funcionar como signo en una
+              interpretación cultural. El fan observa la postura del
+              personaje, la compara entre las tres imágenes y le asigna
+              valores como descenso, tránsito y elevación. Esa relación
+              es una construcción interpretativa: mirar hacia abajo no
+              significa “infierno” en todos los contextos posibles.
+            </p>
+
+            <h4>Relación con Saussure: valor y diferencia</h4>
+            <p>
+              Saussure sostiene que el valor de un signo depende de sus
+              relaciones y diferencias dentro de un sistema. Esta idea
+              ayuda a explicar por qué la teoría compara las portadas en
+              lugar de analizarlas por separado. La mirada hacia abajo
+              adquiere una función narrativa en contraste con la mirada
+              frontal y la mirada hacia arriba. El sentido propuesto nace
+              de la serie completa y de las diferencias entre sus partes.
+            </p>
+
+            <h4>Relación con Jakobson: función poética</h4>
+            <p>
+              La función poética pone el foco en la forma en que se organiza
+              el mensaje y en cómo esa forma produce sentido. En esta teoría,
+              la composición visual, la repetición de un rostro y la variación
+              de la mirada se convierten en elementos significativos. La
+              comparación entre portadas es semejante a observar un patrón:
+              el fan presta atención a la disposición de los elementos y a
+              sus diferencias.
+            </p>
+
+            <h4>¿Qué límites tiene esta interpretación?</h4>
+            <p>
+              La teoría es una lectura posible, pero la postura de la cabeza
+              también puede deberse a decisiones fotográficas, estéticas o
+              promocionales. Para demostrar una intención autoral específica
+              harían falta otras evidencias, como declaraciones del artista
+              o de su equipo creativo. La publicación permite analizar cómo
+              un fan construye sentido, aunque no confirma que su hipótesis
+              sea la única correcta.
+            </p>
+          </div>
+        </article>
+
+        <!-- TEORÍA 3 -->
+        <article class="theory" id="teoria3">
+          <div class="theory-number">03</div>
+          <div>
+            <h3>¿Cómo encaja <em>Hurry Up Tomorrow</em> en la trilogía moderna?</h3>
+
+            <p>
+              La tercera teoría plantea un problema diferente: en vez de
+              aceptar sin discusión que los tres discos forman un recorrido
+              lineal desde el infierno hasta el paraíso, pregunta cómo se
+              relaciona <em>Hurry Up Tomorrow</em> con los dos álbumes
+              anteriores. El foco pasa de interpretar un símbolo específico
+              a discutir la estructura global de la trilogía.
+            </p>
+
+            <p>
+              Una posibilidad es considerar que el tercer álbum continúa
+              principalmente elementos de <em>After Hours</em>, en lugar
+              de funcionar como una continuación directa de <em>Dawn FM</em>.
+              Desde esta lectura, el vínculo entre las obras no tiene por
+              qué formar una secuencia ordenada y perfectamente cerrada.
+              Pueden existir repeticiones, regresos, contradicciones y
+              conexiones temáticas que hagan que el relato se parezca más
+              a un ciclo que a una línea recta.
+            </p>
+
+            <p>
+              Esta interpretación obliga a revisar la primera teoría.
+              Si se parte de que cada disco representa necesariamente una
+              etapa de Dante, el tercer álbum debería ocupar el lugar del
+              paraíso. Pero si sus temas, imágenes o referencias parecen
+              recuperar conflictos anteriores, el fan puede preguntarse
+              si realmente hay una resolución, si el personaje vuelve a
+              un estado previo o si las etapas se superponen.
+            </p>
+
+            <p>
+              Por eso, el desacuerdo entre fans no consiste únicamente en
+              elegir un significado para una imagen. También puede tratarse
+              de decidir qué elementos son relevantes, qué conexiones son
+              más sólidas y qué estructura general permite explicar mejor
+              los tres álbumes. Los participantes pueden compartir las
+              mismas portadas y canciones, pero organizar sus evidencias
+              de forma distinta.
+            </p>
+
+            <div class="reddit-fragment">
+              <span class="source-label">Publicación para consultar · Reddit</span>
+              <blockquote>
+                Debate sobre cómo <em>Hurry Up Tomorrow</em> se relaciona
+                con <em>After Hours</em> y <em>Dawn FM</em>, y sobre si el
+                último disco continúa directamente la narrativa del segundo.
+              </blockquote>
+              <p>
+                La publicación se toma como punto de partida para estudiar
+                una pregunta interpretativa: ¿la trilogía debe leerse como
+                una progresión lineal o admite conexiones menos directas?
+                La descripción resume el problema y no pretende ser una
+                cita textual del usuario.
+              </p>
+              <a class="source-link" href="https://www.reddit.com/r/TheWeeknd/comments/1ijamgm/" target="_blank" rel="noopener noreferrer">Consultar el debate sobre la trilogía en Reddit ↗</a>
+            </div>
+
+            <h4>Relación con Saussure: el sentido depende del sistema</h4>
+            <p>
+              Esta teoría permite observar que ningún álbum tiene que
+              interpretarse de forma aislada. El valor que un fan atribuye
+              a <em>Hurry Up Tomorrow</em> depende, en parte, de las
+              relaciones que establece con los otros dos discos. Si cambia
+              la relación propuesta entre las obras, también puede cambiar
+              el sentido atribuido al álbum final.
+            </p>
+
+            <h4>Relación con Jakobson: función referencial y emotiva</h4>
+            <p>
+              La función referencial aparece cuando el usuario menciona
+              canciones, portadas o acontecimientos concretos para sostener
+              su hipótesis. La función emotiva se observa cuando expresa
+              sorpresa, duda, entusiasmo o desacuerdo. Ambas pueden aparecer
+              en un mismo comentario: el fan puede aportar un dato sobre un
+              álbum y, a la vez, manifestar que esa conexión le resulta
+              convincente o problemática.
+            </p>
+
+            <h4>Relación con Escandell Vidal: interpretar es inferir</h4>
+            <p>
+              Desde la pragmática, la interpretación no depende únicamente
+              del contenido literal de un mensaje. Los participantes
+              consideran el contexto, sus conocimientos previos y la
+              intención que atribuyen a quien escribe. Una pregunta como
+              “¿cómo encaja el último disco?” invita a los demás a aportar
+              razones, recuperar información compartida y proponer
+              inferencias. La comunidad no recibe pasivamente una historia:
+              participa en su reconstrucción.
+            </p>
+
+            <h4>¿Qué aporta esta tercera teoría?</h4>
+            <p>
+              Muestra que una comunidad puede debatir no solo qué significa
+              un signo, sino también qué relación existe entre las partes
+              de una obra. La trilogía se convierte en un objeto de
+              interpretación colectiva y revisable. La lectura final depende
+              de qué indicios selecciona cada participante y de cómo los
+              organiza para sostener su explicación.
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <div class="warning-note">
+        <strong>Nota sobre el corpus:</strong> las teorías presentadas
+        corresponden a lecturas de usuarios. Los enlaces llevan a
+        publicaciones de Reddit que deben consultarse para comprobar
+        el contenido completo, la fecha y el contexto de cada comentario.
+        Una hipótesis de fans no equivale a una explicación oficial del artista.
+      </div>
+    </section>
+
+    <!-- AUTORES -->
+    <section id="autores">
+      <div class="section-heading">
+        <span class="section-number">04 / Marco teórico</span>
+        <h2>Tres autores para entender cómo se produce el significado</h2>
+        <p>Saussure permite pensar el signo y sus relaciones; Jakobson ayuda a reconocer qué funciones cumple el lenguaje; Escandell Vidal explica por qué el contexto y las inferencias son indispensables para interpretar los mensajes.</p>
+      </div>
+
+      <div class="concept-grid">
+        <article class="concept-card">
+          <span class="author">Ferdinand de Saussure</span>
+          <h3>El signo y el sistema</h3>
           <p>
-            Los discos forman parte del contexto que los usuarios recuperan
-            para fundamentar sus teorías. No existe una única lectura
-            obligatoria de sus imágenes y letras.
+            Para Saussure, el signo lingüístico une un significante —la
+            imagen acústica o forma perceptible— y un significado —el
+            concepto asociado—. La relación entre ambos no es natural,
+            sino convencional dentro de una comunidad lingüística.
+          </p>
+          <p>
+            Además, el valor de un signo depende de sus diferencias y
+            relaciones con otros signos del sistema. Por eso, una palabra
+            no tiene valor únicamente por sí misma: también importa cómo
+            se distingue de otras.
+          </p>
+          <p>
+            En el corpus, esta idea ayuda a explicar por qué los fans
+            relacionan imágenes, colores, miradas y títulos. El significado
+            de una portada cambia según las relaciones que el intérprete
+            establece con las demás portadas y con su conocimiento cultural.
+          </p>
+        </article>
+
+        <article class="concept-card">
+          <span class="author">Roman Jakobson</span>
+          <h3>Las funciones del lenguaje</h3>
+          <p>
+            Jakobson distingue seis funciones, según el componente de la
+            comunicación que predomina: referencial, emotiva, conativa,
+            fática, metalingüística y poética. En un mismo mensaje pueden
+            coexistir varias; se habla de predominio, no de exclusividad.
+          </p>
+          <p>
+            En las teorías de Reddit, la función referencial aparece cuando
+            se describen álbumes o portadas; la emotiva, cuando el usuario
+            expresa una opinión o duda; y la conativa, cuando busca una
+            respuesta, invita a debatir o intenta convencer a otros.
+          </p>
+          <p>
+            También puede aparecer la función poética cuando la atención
+            se dirige a la forma del mensaje o a patrones visuales, como
+            la comparación de la mirada en las tres portadas.
+          </p>
+        </article>
+
+        <article class="concept-card">
+          <span class="author">María Victoria Escandell Vidal</span>
+          <h3>Pragmática y contexto</h3>
+          <p>
+            La pragmática estudia cómo se interpretan los enunciados en
+            situaciones concretas. Para comprender un mensaje no alcanza
+            con conocer el código: también importan quién habla, a quién
+            se dirige, qué conocimientos comparte y qué intención se le
+            atribuye.
+          </p>
+          <p>
+            El destinatario realiza inferencias para recuperar sentidos
+            que no siempre están expresados de manera literal. La
+            interpretación surge de combinar lo dicho con información
+            contextual y conocimientos previos.
+          </p>
+          <p>
+            En Reddit, un fan puede entender una referencia porque conoce
+            videoclips, entrevistas o teorías anteriores. Otro lector puede
+            no reconocerla y llegar a una conclusión diferente. El contexto
+            digital también permite responder, corregir, discutir y
+            reformular hipótesis.
+          </p>
+        </article>
+      </div>
+
+      <h3 class="subheading">Aplicación conjunta al corpus</h3>
+      <div class="analysis-text">
+        <p>
+          Los tres enfoques se complementan. Saussure ayuda a estudiar
+          cómo los signos adquieren valor por sus relaciones; Jakobson
+          permite analizar qué hacen los usuarios mediante sus mensajes;
+          y Escandell Vidal explica cómo los participantes interpretan
+          esos mensajes a partir del contexto y de las inferencias.
+        </p>
+        <p>
+          Por ejemplo, un usuario puede observar que The Weeknd mira hacia
+          abajo en una portada y hacia arriba en otra. Desde una perspectiva
+          cercana a Saussure, compara las diferencias entre las imágenes
+          y las integra en un sistema de relaciones. Desde Jakobson, puede
+          describirse cómo presenta información sobre las portadas, expresa
+          su opinión e intenta convencer a otros participantes. Desde la
+          pragmática, se considera que el lector interpreta esa propuesta
+          según su conocimiento de los álbumes, de la obra de Dante y de
+          las conversaciones previas.
+        </p>
+        <p>
+          Así, el sentido no se presenta como una propiedad evidente que
+          todos descubren de manera idéntica. Se construye mediante
+          relaciones entre signos, decisiones discursivas, conocimientos
+          compartidos y situaciones comunicativas. Esto no significa que
+          cualquier interpretación sea igualmente sólida: una teoría puede
+          evaluarse según la evidencia que presenta, la coherencia de sus
+          conexiones y su capacidad para explicar los elementos que
+          selecciona.
+        </p>
+      </div>
+    </section>
+
+    <!-- ACTIVIDAD INTERACTIVA -->
+    <section id="interactivo">
+      <div class="interactive-panel">
+        <span class="section-number">05 / Actividad interactiva</span>
+        <h2>¿Cómo interpretarías las pistas?</h2>
+        <p>
+          Elegí la forma de análisis que te resulte más convincente.
+          Al seleccionar una opción, vas a ver cómo se relaciona con
+          los conceptos lingüísticos trabajados en esta página.
+        </p>
+
+        <div class="choice-grid">
+          <button class="choice" type="button" data-choice="journey" aria-pressed="false">
+            <span class="choice-number">OPCIÓN 01</span>
+            <strong>Un viaje de transformación</strong>
+            <span>Relacionar los tres discos con infierno, purgatorio y paraíso.</span>
+          </button>
+
+          <button class="choice" type="button" data-choice="covers" aria-pressed="false">
+            <span class="choice-number">OPCIÓN 02</span>
+            <strong>Una historia en las portadas</strong>
+            <span>Comparar las miradas y la composición visual de los álbumes.</span>
+          </button>
+
+          <button class="choice" type="button" data-choice="cycle" aria-pressed="false">
+            <span class="choice-number">OPCIÓN 03</span>
+            <strong>Una historia no lineal</strong>
+            <span>Cuestionar si el álbum final cierra realmente el recorrido.</span>
+          </button>
+        </div>
+
+        <div class="interaction-result" id="interactionResult" aria-live="polite">
+          <h3 id="resultTitle">Tu interpretación</h3>
+          <div id="resultText"></div>
+          <button type="button" class="reset-choice" id="resetChoice">Volver a elegir</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- MULTIMEDIA -->
+    <section id="multimedia">
+      <div class="section-heading">
+        <span class="section-number">06 / Recurso multimedia</span>
+        <h2>La música y la imagen como signos</h2>
+        <p>Los videoclips amplían el universo visual que los fans recuperan para construir interpretaciones.</p>
+      </div>
+
+      <div class="media-grid">
+        <div>
+          <div class="video-frame">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/ygTZZpVkmKg"
+              title="Videoclip de The Weeknd"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <p style="margin-top:10px;color:var(--muted);font-size:.82rem">
+            Si el reproductor no está disponible, podés buscar material audiovisual
+            en el <a class="source-link" href="https://www.youtube.com/@TheWeeknd" target="_blank" rel="noopener noreferrer">canal oficial de The Weeknd en YouTube ↗</a>.
           </p>
         </div>
 
-        <div class="album-grid">
-          <article class="album-card" style="--card-color: #f12613;">
-            <div>
-              <span class="year">2020 · PRIMER ÁLBUM</span>
-              <h3>After Hours</h3>
-              <p>
-                El descenso, la autodestrucción, la culpa y el sufrimiento
-                son algunos de los elementos que los fans relacionan con
-                una posible representación del infierno.
-              </p>
-            </div>
-            <a href="#teoria1">Ver la teoría →</a>
-          </article>
-
-          <article class="album-card" style="--card-color: #12a984;">
-            <div>
-              <span class="year">2022 · SEGUNDO ÁLBUM</span>
-              <h3>Dawn FM</h3>
-              <p>
-                La radio, el tránsito y la revisión de la propia vida
-                permiten proponer una lectura vinculada con el limbo
-                o el purgatorio.
-              </p>
-            </div>
-            <a href="#teoria1">Ver la teoría →</a>
-          </article>
-
-          <article class="album-card" style="--card-color: #a4ead4;">
-            <div>
-              <span class="year">2025 · TERCER ÁLBUM</span>
-              <h3>Hurry Up Tomorrow</h3>
-              <p>
-                La búsqueda de redención, el cambio y la posibilidad de
-                escapar de una identidad anterior abren el debate sobre
-                qué significa alcanzar el paraíso.
-              </p>
-            </div>
-            <a href="#teoria3">Ver la teoría →</a>
-          </article>
-        </div>
-      </section>
-
-      <!-- TEORÍAS DE REDDIT -->
-
-      <section id="teorias">
-        <div class="section-heading">
-          <span class="section-number">03 / El debate en Reddit</span>
-          <h2>¿Infierno, purgatorio y paraíso?</h2>
+        <div class="media-copy">
+          <h3>¿Qué aporta lo audiovisual?</h3>
           <p>
-            Las siguientes publicaciones permiten observar cómo los
-            seguidores elaboran diferentes explicaciones a partir de
-            signos compartidos. Cada teoría constituye una interpretación
-            de los fans, no una confirmación automática de la intención
-            del artista.
+            Una canción no comunica solamente a través de sus palabras.
+            La melodía, la voz, el ritmo, la iluminación, los colores,
+            los gestos y la composición de una escena también participan
+            en la producción de sentido.
+          </p>
+          <p>
+            Cuando los fans analizan un videoclip, seleccionan algunos
+            de esos elementos y los relacionan con otros materiales.
+            Una escena puede funcionar como evidencia para una teoría,
+            pero su interpretación depende de las conexiones que el
+            espectador construye.
+          </p>
+          <p>
+            Esto permite vincular el análisis lingüístico con una cultura
+            digital en la que los significados circulan entre canciones,
+            imágenes, comentarios, videos y debates colectivos.
           </p>
         </div>
+      </div>
+    </section>
 
-        <div class="theory-list">
+    <!-- CONCLUSIÓN -->
+    <section id="conclusion">
+      <div class="section-heading">
+        <span class="section-number">07 / Conclusión</span>
+        <h2>El significado también se construye en comunidad</h2>
+      </div>
 
-          <!-- TEORÍA 1 -->
+      <div class="conclusion">
+        <p>
+          Las teorías sobre la trilogía de The Weeknd muestran que los
+          fans no se limitan a recibir una obra: seleccionan indicios,
+          los comparan y construyen explicaciones para compartirlas con
+          otras personas. La lectura que relaciona los discos con Dante,
+          la comparación de las miradas en las portadas y el debate sobre
+          la continuidad narrativa parten de preguntas diferentes y
+          organizan las evidencias de distintas maneras.
+        </p>
+        <p>
+          Saussure permite comprender la importancia de las relaciones
+          entre signos; Jakobson ayuda a reconocer las funciones que
+          cumplen los mensajes dentro de la discusión; y Escandell Vidal
+          permite explicar por qué la interpretación depende del contexto,
+          de los conocimientos previos y de las inferencias de los
+          participantes.
+        </p>
+        <p>
+          En definitiva, que existan varias interpretaciones no implica
+          que todas estén igualmente justificadas. Las teorías pueden
+          compararse según los signos que consideran, la coherencia de
+          sus argumentos y la evidencia que aportan. La comunidad digital
+          se convierte así en un espacio donde el significado se propone,
+          se discute y se revisa.
+        </p>
+      </div>
+    </section>
 
-          <article class="theory" id="teoria1">
-            <div class="theory-number">01</div>
+    <!-- FUENTES -->
+    <section id="fuentes">
+      <div class="section-heading">
+        <span class="section-number">08 / Fuentes y referencias</span>
+        <h2>Bibliografía y corpus digital</h2>
+        <p>
+          Las fuentes se dividen entre publicaciones de fans —que constituyen
+          el corpus de análisis— y materiales teóricos para estudiar los
+          conceptos lingüísticos. Los enlaces externos se abren en una nueva pestaña.
+        </p>
+      </div>
 
-            <div>
-              <h3>La trilogía como un viaje espiritual</h3>
+      <h3 class="subheading">Corpus: publicaciones de Reddit</h3>
+      <ol class="sources-list">
+        <li>
+          <strong>Teoría sobre la trilogía y <em>La divina comedia</em>.</strong>
+          <p>Publicación de Reddit utilizada como punto de partida para analizar la lectura espiritual de los tres álbumes.</p>
+          <a href="https://www.reddit.com/r/TheWeeknd/comments/1fctl03/" target="_blank" rel="noopener noreferrer">Consultar publicación ↗</a>
+        </li>
+        <li>
+          <strong>“Theory about the album covers (read captions)”</strong>
+          <p>Publicación que compara las portadas y propone interpretar la dirección de la mirada en relación con Infierno, Purgatorio y Paraíso.</p>
+          <a href="https://www.reddit.com/r/TheWeeknd/comments/1g3006t/" target="_blank" rel="noopener noreferrer">Consultar publicación ↗</a>
+        </li>
+        <li>
+          <strong>Debate sobre cómo se relaciona <em>Hurry Up Tomorrow</em> con la trilogía.</strong>
+          <p>Publicación para examinar las distintas formas en que los fans conectan el último álbum con los anteriores.</p>
+          <a href="https://www.reddit.com/r/TheWeeknd/comments/1ijamgm/" target="_blank" rel="noopener noreferrer">Consultar publicación ↗</a>
+        </li>
+      </ol>
 
-              <p>
-                Una primera interpretación relaciona los tres álbumes con
-                las etapas de <em>La divina comedia</em>: el infierno,
-                el purgatorio y el paraíso. Desde esta perspectiva,
-                <em>After Hours</em> representa el sufrimiento y la
-                autodestrucción; <em>Dawn FM</em>, un estado intermedio
-                de revisión y arrepentimiento; y <em>Hurry Up Tomorrow</em>,
-                la posibilidad de alcanzar una transformación.
-              </p>
+      <h3 class="subheading">Marco teórico</h3>
+      <ol class="sources-list">
+        <li>
+          <strong>Saussure, Ferdinand de. <em>Curso de lingüística general</em>.</strong>
+          <p>Referencia clásica para los conceptos de signo lingüístico, significante, significado, sistema y valor diferencial.</p>
+          <a href="https://archive.org/search?query=Ferdinand+de+Saussure+Curso+de+ling%C3%BC%C3%ADstica+general" target="_blank" rel="noopener noreferrer">Buscar ediciones disponibles ↗</a>
+        </li>
+        <li>
+          <strong>Jakobson, Roman. “Lingüística y poética”.</strong>
+          <p>Texto de referencia para las funciones del lenguaje y la relación entre los componentes de la comunicación.</p>
+          <a href="https://scholar.google.com/scholar?q=Roman+Jakobson+Ling%C3%BC%C3%ADstica+y+po%C3%A9tica" target="_blank" rel="noopener noreferrer">Buscar el texto académico ↗</a>
+        </li>
+        <li>
+          <strong>Escandell Vidal, María Victoria. <em>Introducción a la pragmática</em>.</strong>
+          <p>Obra de referencia para el estudio de la interpretación, el contexto, los participantes y las inferencias en la comunicación.</p>
+          <a href="https://search.worldcat.org/search?q=Escandell+Vidal+Introducci%C3%B3n+a+la+pragm%C3%A1tica" target="_blank" rel="noopener noreferrer">Consultar registros bibliográficos ↗</a>
+        </li>
+        <li>
+          <strong>Canal oficial de The Weeknd.</strong>
+          <p>Fuente audiovisual complementaria para consultar videoclips y material publicado por el artista.</p>
+          <a href="https://www.youtube.com/@TheWeeknd" target="_blank" rel="noopener noreferrer">Abrir canal oficial ↗</a>
+        </li>
+      </ol>
 
-              <p>
-                Esta lectura no surge de un único signo aislado. Los fans
-                conectan letras, atmósferas sonoras, imágenes y referencias
-                religiosas o espirituales. La interpretación se vuelve
-                convincente para quienes reconocen una relación entre esos
-                elementos y los organizan como partes de una misma historia.
-              </p>
+      <div class="warning-note">
+        <strong>Nota académica:</strong> antes de entregar el trabajo, abrí las tres
+        publicaciones de Reddit y comprobá que correspondan exactamente a los
+        títulos y argumentos que vas a citar. Los enlaces bibliográficos de
+        búsqueda llevan a catálogos o resultados académicos; para una cita
+        formal, utilizá los datos de la edición o el artículo que efectivamente
+        consultaste. No atribuyas al artista una intención que solo aparece
+        como hipótesis de los fans.
+      </div>
 
-              <div class="reddit-fragment">
-                <span class="source-label">Fragmento del debate · Reddit</span>
+      <div class="tags" aria-label="Etiquetas del proyecto">
+        <span class="tag">#Lingüística</span>
+        <span class="tag">#Saussure</span>
+        <span class="tag">#Jakobson</span>
+        <span class="tag">#Pragmática</span>
+        <span class="tag">#TheWeeknd</span>
+        <span class="tag">#Reddit</span>
+        <span class="tag">#Interpretación</span>
+        <span class="tag">#Signos</span>
+      </div>
+    </section>
+  </main>
 
-                <blockquote>
-                  “The final trilogy is based off Dante Alighieri’s book
-                  ‘The Divine Comedy’.”
-                </blockquote>
+  <footer>
+    <p>Proyecto académico · Lingüística · Análisis del discurso digital</p>
+    <a href="#inicio">Volver al inicio ↑</a>
+  </footer>
+</div>
 
-                <p>
-                  El usuario presenta la relación con Dante como punto de
-                  partida para interpretar los tres álbumes. La hipótesis
-                  organiza los discos como etapas de un recorrido, pero el
-                  debate posterior muestra que esa estructura también puede
-                  cuestionarse.
-                </p>
+<div class="search-message" id="searchMessage" role="status" aria-live="polite"></div>
 
-                <a
+<script>
+  // ACTIVIDAD INTERACTIVA
+  const choiceButtons = document.querySelectorAll(".choice");
+  const interactionResult = document.getElementById("interactionResult");
+  const resultTitle = document.getElementById("resultTitle");
+  const resultText = document.getElementById("resultText");
+  const resetChoice = document.getElementById("resetChoice");
+
+  const interpretations = {
+    journey: {
+      title: "Interpretación 01: el viaje espiritual",
+      paragraphs: [
+        "Esta lectura organiza los tres álbumes como una secuencia: caída, tránsito y transformación. Los fans relacionan imágenes, letras y atmósferas con el imaginario de La divina comedia.",
+        "Desde Saussure, el sentido surge de las relaciones entre signos; desde Escandell Vidal, el lector usa conocimientos culturales previos para inferir la conexión con Dante. Es una interpretación posible, no una confirmación oficial de la intención del artista."
+      ]
+    },
+    covers: {
+      title: "Interpretación 02: las portadas como sistema",
+      paragraphs: [
+        "En esta lectura, el indicio central es la dirección de la mirada. El fan compara las portadas y les atribuye una progresión: hacia abajo, al frente y hacia arriba.",
+        "La comparación se relaciona con la idea saussureana de valor diferencial: cada imagen adquiere sentido al contrastarse con las otras. Sin embargo, la dirección de la mirada no tiene un significado universal; la lectura depende del contexto cultural y de la hipótesis que propone el usuario."
+      ]
+    },
+    cycle: {
+      title: "Interpretación 03: una historia abierta",
+      paragraphs: [
+        "Esta lectura cuestiona que el último álbum tenga que representar necesariamente el paraíso o un cierre definitivo. El fan puede encontrar continuidades, regresos o conflictos que conectan el disco final con los anteriores.",
+        "La pragmática permite observar cómo los participantes usan información compartida, hacen inferencias y discuten qué indicios son más relevantes. La interpretación se construye mediante argumentos y puede revisarse cuando otros usuarios aportan nuevas conexiones."
+      ]
+    }
+  };
+
+  choiceButtons.forEach(function(button) {
+    button.addEventListener("click", function() {
+      const selected = button.dataset.choice;
+      const interpretation = interpretations[selected];
+
+      if (!interpretation) return;
+
+      choiceButtons.forEach(function(item) {
+        item.setAttribute("aria-pressed", String(item === button));
+      });
+
+      resultTitle.textContent = interpretation.title;
+      resultText.replaceChildren();
+
+      interpretation.paragraphs.forEach(function(paragraph) {
+        const p = document.createElement("p");
+        p.textContent = paragraph;
+        resultText.appendChild(p);
+      });
+
+      interactionResult.classList.add("visible");
+      interactionResult.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+  });
+
+  resetChoice.addEventListener("click", function() {
+    choiceButtons.forEach(function(button) {
+      button.setAttribute("aria-pressed", "false");
+    });
+
+    interactionResult.classList.remove("visible");
+    resultText.replaceChildren();
+    document.querySelector("#interactivo h2").scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  });
+
+  // NAVEGACIÓN INTERNA: TODOS LOS ENLACES CON # LLEVAN A SU DESTINO
+  document.addEventListener("click", function(event) {
+    const link = event.target.closest('a[href^="#"]');
+    if (!link) return;
+
+    const targetId = link.getAttribute("href").slice(1);
+    const target = document.getElementById(targetId);
+
+    if (!target) {
+      console.warn("No existe una sección con el ID:", targetId);
+      return;
+    }
+
+    event.preventDefault();
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+
+    if (history.replaceState) {
+      history.replaceState(null, "", "#" + targetId);
+    }
+  });
+
+  // BUSCADOR DE CONCEPTOS Y CONTENIDO
+  const searchForm = document.getElementById("searchForm");
+  const searchInput = document.getElementById("searchInput");
+  const searchMessage = document.getElementById("searchMessage");
+
+  function showSearchMessage(message) {
+    searchMessage.textContent = message;
+    searchMessage.classList.add("visible");
+  }
+
+  searchForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const query = searchInput.value.trim().toLocaleLowerCase("es");
+
+    if (!query) {
+      showSearchMessage("Escribí una palabra o un concepto para buscar.");
+      return;
+    }
+
+    const searchableElements = Array.from(
+      document.querySelectorAll("main h1, main h2, main h3, main h4, main p, main li")
+    );
+
+    const match = searchableElements.find(function(element) {
+      return element.textContent.toLocaleLowerCase("es").includes(query);
+    });
+
+    if (match) {
+      match.scrollIntoView({ behavior: "smooth", block: "center" });
+      showSearchMessage('Se encontró "' + searchInput.value.trim() + '".');
+    } else {
+      showSearchMessage('No se encontró "' + searchInput.value.trim() + '" en esta página.');
+    }
+  });
+
+  // CERRAR EL AVISO DEL BUSCADOR AL CAMBIAR LA BÚSQUEDA
+  searchInput.addEventListener("input", function() {
+    searchMessage.classList.remove("visible");
+  });
+</script>
+
+</body>
+</html>
