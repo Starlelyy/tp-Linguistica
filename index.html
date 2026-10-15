@@ -1,891 +1,1152 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>THE WEEKND | Experiencia lingüística</title>
-
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
-
-<style>
-:root {
-  --green: #12a984;
-  --mint: #a4ead4;
-  --blue: #0a304a;
-  --dark: #061b2b;
-  --red: #f12613;
-  --white: #f7f8f4;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background: #041b20;
-  color: var(--white);
-  font-family: "DM Sans", sans-serif;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button {
-  font-family: inherit;
-  cursor: pointer;
-}
-
-.page {
-  width: min(1250px, 100%);
-  margin: auto;
-  padding: 28px;
-  min-height: 100vh;
-  background:
-    radial-gradient(circle at 20% 0%, #12654f 0%, transparent 45%),
-    linear-gradient(140deg, #08775e, #0b354c 60%, #061b2b);
-}
-
-/* ENCABEZADO */
-
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 18px 24px;
-}
-
-.menu {
-  font-size: 25px;
-  background: none;
-  border: none;
-  color: white;
-}
-
-.logo {
-  font-family: "Playfair Display", serif;
-  font-weight: 800;
-  letter-spacing: 5px;
-  font-size: 16px;
-  text-align: center;
-}
-
-.search {
-  width: 135px;
-  padding: 6px 12px;
-  border: 1px solid #ffffff80;
-  border-radius: 25px;
-  display: flex;
-  gap: 5px;
-}
-
-.search input {
-  width: 100%;
-  background: transparent;
-  color: white;
-  border: none;
-  outline: none;
-  font-size: 11px;
-}
-
-.search input::placeholder {
-  color: #d5ece5;
-}
-
-/* PORTADA PRINCIPAL */
-
-.hero {
-  min-height: 570px;
-  position: relative;
-  overflow: hidden;
-  border: 1px solid #ffffff25;
-  border-radius: 7px;
-  background:
-    linear-gradient(155deg, #13a981 0%, #087d70 35%,
-    #0b3651 72%, #071d30 100%);
-}
-
-.navigation {
-  position: absolute;
-  left: 0;
-  top: 30%;
-  display: flex;
-  flex-direction: column;
-  z-index: 5;
-}
-
-.navigation a {
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  padding: 13px 9px;
-  font-size: 9px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  color: #e4f7ef;
-}
-
-.navigation a:hover,
-.navigation a.active {
-  background: white;
-  color: #0b3b43;
-}
-
-/* CÍRCULO ROJO Y FIGURA GRÁFICA */
-
-.artwork {
-  position: absolute;
-  left: 7%;
-  bottom: 0;
-  height: 86%;
-  width: 44%;
-  z-index: 1;
-}
-
-.red-circle {
-  position: absolute;
-  z-index: 0;
-  width: 300px;
-  height: 300px;
-  top: 0;
-  left: 15%;
-  background: var(--red);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.weeknd-photo {
-  position: absolute;
-  z-index: 1;
-  bottom: 0;
-  left: 10%;
-  width: 75%;
-  height: 76%;
-  object-fit: contain;
-  object-position: center bottom;
-  pointer-events: none;
-}
-.figure {
-  position: absolute;
-  width: 75%;
-  height: 76%;
-  bottom: 0;
-  left: 10%;
-}
-
-/* Figura abstracta original, sin fotografía */
-
-.head {
-  position: absolute;
-  z-index: 2;
-  top: 4%;
-  left: 33%;
-  width: 35%;
-  height: 34%;
-  border-radius: 45% 45% 42% 42%;
-  background: linear-gradient(90deg, #020d12, #10312f, #020d12);
-}
-
-.head::before {
-  content: "";
-  position: absolute;
-  top: 45%;
-  left: -5%;
-  width: 110%;
-  height: 15%;
-  border-radius: 50%;
-  background: #020c11;
-}
-
-.neck {
-  position: absolute;
-  z-index: 1;
-  top: 32%;
-  left: 42%;
-  width: 17%;
-  height: 20%;
-  background: #08746a;
-}
-
-.body-figure {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 59%;
-  background: linear-gradient(90deg, #061723, #174351, #071c29);
-  clip-path: polygon(30% 0, 42% 9%, 58% 9%, 70% 0,
-  86% 12%, 100% 100%, 0 100%, 14% 12%);
-}
-
-.body-figure::after {
-  content: "";
-  position: absolute;
-  left: 43%;
-  top: 0;
-  height: 100%;
-  width: 14%;
-  background: #020d15;
-}
-
-.chain {
-  position: absolute;
-  z-index: 3;
-  top: 15%;
-  left: 36%;
-  width: 28%;
-  height: 40%;
-  border: 2px solid #b4c6b9;
-  border-top: none;
-  border-radius: 0 0 50% 50%;
-}
-
-/* TEXTO PRINCIPAL */
-
-.hero-content {
-  position: absolute;
-  z-index: 3;
-  right: 6%;
-  top: 29%;
-  width: 42%;
-}
-
-.eyebrow {
-  color: var(--mint);
-  font-size: 10px;
-  font-weight: bold;
-  letter-spacing: 3px;
-  margin-bottom: 15px;
-  text-transform: uppercase;
-}
-
-.hero h1 {
-  font-family: "Playfair Display", serif;
-  font-size: clamp(38px, 5vw, 65px);
-  line-height: 1.02;
-  margin-bottom: 20px;
-}
-
-.hero-content p {
-  font-size: 12px;
-  line-height: 1.8;
-  color: #e2efec;
-}
-
-.primary-button {
-  background: transparent;
-  color: white;
-  border: 1px solid white;
-  border-radius: 5px;
-  padding: 11px 22px;
-  margin-top: 22px;
-  transition: 0.3s;
-}
-
-.primary-button:hover {
-  background: white;
-  color: var(--blue);
-}
-
-.counter {
-  position: absolute;
-  right: 70px;
-  bottom: 18px;
-  z-index: 4;
-  color: #d1e1df;
-  font-size: 12px;
-  letter-spacing: 2px;
-}
-
-.next {
-  position: absolute;
-  z-index: 5;
-  right: 0;
-  bottom: 0;
-  width: 50px;
-  height: 50px;
-  border: none;
-  background: white;
-  color: var(--blue);
-  font-size: 28px;
-}
-
-.next:hover {
-  background: var(--red);
-  color: white;
-}
-
-/* CONTENIDO DE LINGÜÍSTICA */
-
-.content-section {
-  padding: 60px 15px 25px;
-}
-
-.section-title {
-  font-family: "Playfair Display", serif;
-  font-size: clamp(27px, 3vw, 38px);
-  margin-bottom: 12px;
-}
-
-.section-description {
-  color: #c6ded9;
-  font-size: 13px;
-  line-height: 1.8;
-  max-width: 720px;
-  margin-bottom: 28px;
-}
-
-.album-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-
-.album-card {
-  text-align: left;
-  color: white;
-  padding: 22px;
-  min-height: 210px;
-  background: #061c2bc9;
-  border: 1px solid #b5eee52e;
-  border-radius: 7px;
-  transition: 0.25s;
-}
-
-.album-card:hover,
-.album-card.selected {
-  border-color: var(--mint);
-  background: #0a3041;
-  transform: translateY(-4px);
-}
-
-.album-number {
-  font-size: 10px;
-  letter-spacing: 2px;
-  color: var(--mint);
-}
-
-.album-card h3 {
-  font-family: "Playfair Display", serif;
-  font-size: 25px;
-  margin: 18px 0 12px;
-}
-
-.album-card p {
-  font-size: 12px;
-  line-height: 1.8;
-  color: #c8dcda;
-}
-
-.album-tag {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 5px 10px;
-  border: 1px solid #ffffff60;
-  border-radius: 30px;
-  font-size: 9px;
-  letter-spacing: 1px;
-}
-
-/* PANEL EXPLICATIVO */
-
-.study-panel {
-  display: grid;
-  grid-template-columns: 1fr 1.3fr;
-  gap: 28px;
-  margin-top: 22px;
-  padding: 25px;
-  background: #041b29bd;
-  border: 1px solid #b5eee52e;
-  border-radius: 7px;
-}
-
-.mini-title {
-  color: var(--mint);
-  font-size: 10px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-}
-
-.study-panel h3 {
-  font-family: "Playfair Display", serif;
-  font-size: 26px;
-  margin: 12px 0;
-}
-
-.study-panel p {
-  font-size: 12px;
-  line-height: 1.9;
-  color: #c8dcda;
-}
-
-.concepts {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-
-.concept {
-  background: #ffffff08;
-  border-left: 2px solid var(--red);
-  padding: 13px;
-}
-
-.concept strong {
-  display: block;
-  font-size: 12px;
-  margin-bottom: 7px;
-}
-
-.concept span {
-  font-size: 11px;
-  line-height: 1.7;
-  color: #c8dcda;
-}
-
-footer {
-  display: flex;
-  justify-content: space-between;
-  gap: 15px;
-  padding: 28px 15px 8px;
-  color: #a9c7c3;
-  font-size: 10px;
-  letter-spacing: 1px;
-}
-
-/* ADAPTACIÓN A CELULARES */
-
-@media (max-width: 760px) {
-  .page {
-    padding: 12px;
-  }
-
-  header {
-    padding: 12px 4px 20px;
-  }
-
-  .logo {
-    font-size: 10px;
-    letter-spacing: 2px;
-  }
-
-  .search {
-    width: 95px;
-  }
-
-  .hero {
-    min-height: 720px;
-  }
-
-  .artwork {
-    left: 12%;
-    top: 3%;
-    bottom: auto;
-    height: 44%;
-    width: 78%;
-  }
-
-  .red-circle {
-    width: 240px;
-    height: 240px;
-    left: 15%;
-  }
-
-  .figure {
-    height: 100%;
-  }
-
-  .hero-content {
-    top: 49%;
-    left: 12%;
-    right: 7%;
-    width: 80%;
-  }
-
-  .hero h1 {
-    font-size: 43px;
-  }
-
-  .hero-content p {
-    font-size: 12px;
-  }
-
-  .album-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .album-card {
-    min-height: auto;
-  }
-
-  .study-panel {
-    grid-template-columns: 1fr;
-    padding: 18px;
-  }
-
-  .concepts {
-    grid-template-columns: 1fr;
-  }
-
-  footer {
-    flex-direction: column;
-    line-height: 1.8;
-  }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Entre el infierno y el paraíso | The Weeknd</title>
+
+  <meta
+    name="description"
+    content="Un análisis lingüístico de cómo los fans construyen significados e interpretaciones sobre la trilogía de The Weeknd."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --green: #12a984;
+      --mint: #a4ead4;
+      --blue: #0a304a;
+      --dark: #061b2b;
+      --red: #f12613;
+      --cream: #f5f2eb;
+      --white: #ffffff;
+      --muted: #b8c9d0;
+      --line: rgba(255, 255, 255, 0.15);
+      --panel: rgba(255, 255, 255, 0.055);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      background: var(--dark);
+      color: var(--cream);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .page {
+      width: min(1180px, 92%);
+      margin: 0 auto;
+    }
+
+    /* HEADER */
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .logo {
+      color: var(--mint);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .menu a {
+      color: var(--muted);
+      font-size: 0.77rem;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      transition: color 0.2s ease;
+    }
+
+    .menu a:hover {
+      color: var(--mint);
+    }
+
+    .search {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .search input {
+      width: 150px;
+      min-width: 0;
+      padding: 9px 11px;
+      color: var(--cream);
+      background: transparent;
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      outline: none;
+    }
+
+    .search input:focus {
+      border-color: var(--mint);
+    }
+
+    .search button {
+      padding: 9px 12px;
+      color: var(--dark);
+      background: var(--mint);
+      border: none;
+      border-radius: 3px;
+      font-weight: 700;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 600px;
+      display: grid;
+      grid-template-columns: 1fr 0.95fr;
+      align-items: center;
+      gap: 40px;
+      padding: 65px 0 80px;
+      position: relative;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: var(--mint);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Playfair Display", serif;
+      font-weight: 500;
+      line-height: 1.15;
+    }
+
+    h1 {
+      max-width: 680px;
+      font-size: clamp(2.8rem, 6vw, 5.8rem);
+      letter-spacing: -0.045em;
+    }
+
+    h1 span {
+      color: var(--red);
+      font-style: italic;
+    }
+
+    .hero-copy p {
+      max-width: 570px;
+      margin-top: 25px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 19px;
+      border: 1px solid var(--mint);
+      border-radius: 3px;
+      background: var(--mint);
+      color: var(--dark);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button.secondary {
+      color: var(--cream);
+      background: transparent;
+      border-color: var(--line);
+    }
+
+    .artwork {
+      position: relative;
+      min-height: 460px;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    /* CÍRCULO ROJO DETRÁS DE LA IMAGEN */
+
+    .red-circle {
+      position: absolute;
+      z-index: 0;
+      width: min(340px, 75%);
+      aspect-ratio: 1;
+      top: 5%;
+      left: 14%;
+      background: var(--red);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .weeknd-photo {
+      position: absolute;
+      z-index: 1;
+      bottom: 0;
+      left: 6%;
+      width: 90%;
+      height: 94%;
+      object-fit: contain;
+      object-position: center bottom;
+      pointer-events: none;
+    }
+
+    .artwork-caption {
+      position: absolute;
+      z-index: 2;
+      right: 0;
+      bottom: 15px;
+      color: var(--cream);
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+    }
+
+    /* GENERAL */
+
+    section {
+      padding: 75px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-heading {
+      max-width: 760px;
+      margin-bottom: 38px;
+    }
+
+    .section-heading h2 {
+      margin-bottom: 17px;
+      font-size: clamp(2.1rem, 4vw, 3.6rem);
+    }
+
+    .section-heading p {
+      color: var(--muted);
+    }
+
+    .section-number {
+      display: block;
+      margin-bottom: 13px;
+      color: var(--red);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .accent {
+      color: var(--mint);
+    }
+
+    .body-copy {
+      max-width: 850px;
+      color: #d4dfe2;
+    }
+
+    .body-copy p + p {
+      margin-top: 18px;
+    }
+
+    /* CONTEXTO */
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .note {
+      padding: 25px;
+      background: var(--panel);
+      border-left: 3px solid var(--green);
+    }
+
+    .note h3 {
+      margin-bottom: 12px;
+      font-size: 1.4rem;
+    }
+
+    .note p {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    /* ALBUMES */
+
+    .album-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .album-card {
+      position: relative;
+      min-height: 260px;
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      overflow: hidden;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .album-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--mint);
+    }
+
+    .album-card::before {
+      content: "";
+      position: absolute;
+      top: -70px;
+      right: -70px;
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      background: var(--card-color, var(--red));
+      opacity: 0.14;
+    }
+
+    .album-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .album-card .year {
+      color: var(--muted);
+      font-size: 0.75rem;
+      letter-spacing: 0.13em;
+    }
+
+    .album-card h3 {
+      margin: 18px 0 12px;
+      font-size: 1.8rem;
+    }
+
+    .album-card p {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .album-card a {
+      display: inline-block;
+      margin-top: 20px;
+      color: var(--mint);
+      font-size: 0.8rem;
+      text-decoration: none;
+    }
+
+    /* TEORÍAS */
+
+    .theory-list {
+      display: grid;
+      gap: 24px;
+    }
+
+    .theory {
+      display: grid;
+      grid-template-columns: 75px 1fr;
+      gap: 25px;
+      padding: 30px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+    }
+
+    .theory-number {
+      color: var(--red);
+      font-family: "Playfair Display", serif;
+      font-size: 2.7rem;
+      line-height: 1;
+    }
+
+    .theory h3 {
+      margin-bottom: 14px;
+      font-size: 1.75rem;
+    }
+
+    .theory p {
+      color: #d4dfe2;
+    }
+
+    .theory p + p {
+      margin-top: 14px;
+    }
+
+    .reddit-fragment {
+      margin-top: 22px;
+      padding: 20px;
+      background: rgba(10, 48, 74, 0.72);
+      border-left: 3px solid var(--red);
+    }
+
+    .reddit-fragment .source-label {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--mint);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .reddit-fragment blockquote {
+      color: var(--cream);
+      font-family: "Playfair Display", serif;
+      font-size: 1.12rem;
+      line-height: 1.55;
+    }
+
+    .reddit-fragment p {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .source-link {
+      display: inline-block;
+      margin-top: 12px;
+      color: var(--mint);
+      font-size: 0.85rem;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .warning-note {
+      margin-top: 25px;
+      padding: 18px 20px;
+      color: var(--muted);
+      background: rgba(241, 38, 19, 0.08);
+      border: 1px solid rgba(241, 38, 19, 0.3);
+      font-size: 0.9rem;
+    }
+
+    /* AUTORES */
+
+    .concept-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .concept-card {
+      padding: 25px;
+      border-top: 3px solid var(--green);
+      background: var(--panel);
+    }
+
+    .concept-card:nth-child(2) {
+      border-top-color: var(--red);
+    }
+
+    .concept-card:nth-child(3) {
+      border-top-color: var(--mint);
+    }
+
+    .concept-card .author {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--mint);
+      font-size: 0.73rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .concept-card h3 {
+      margin-bottom: 15px;
+      font-size: 1.6rem;
+    }
+
+    .concept-card p {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .concept-card p + p {
+      margin-top: 13px;
+    }
+
+    .subheading {
+      margin: 45px 0 20px;
+      font-size: 1.75rem;
+    }
+
+    .analysis-text {
+      max-width: 900px;
+      color: #d4dfe2;
+    }
+
+    .analysis-text p + p {
+      margin-top: 17px;
+    }
+
+    /* INTERACTIVO */
+
+    .interactive-panel {
+      padding: clamp(25px, 5vw, 50px);
+      background: var(--cream);
+      color: var(--dark);
+    }
+
+    .interactive-panel .section-number {
+      color: #b91c0c;
+    }
+
+    .interactive-panel h2 {
+      max-width: 750px;
+      margin-bottom: 15px;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+    }
+
+    .interactive-panel > p {
+      max-width: 780px;
+      color: #40535b;
+    }
+
+    .choice-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .choice {
+      min-height: 170px;
+      padding: 20px;
+      text-align: left;
+      color: var(--dark);
+      background: white;
+      border: 2px solid #d7dedb;
+      border-radius: 3px;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .choice:hover {
+      transform: translateY(-3px);
+      border-color: var(--green);
+    }
+
+    .choice[aria-pressed="true"] {
+      border-color: var(--red);
+      background: #fff3f1;
+    }
+
+    .choice .choice-number {
+      display: block;
+      margin-bottom: 12px;
+      color: #b91c0c;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+    }
+
+    .choice strong {
+      display: block;
+      margin-bottom: 8px;
+      font-family: "Playfair Display", serif;
+      font-size: 1.25rem;
+      line-height: 1.25;
+    }
+
+    .choice span:last-child {
+      color: #52636a;
+      font-size: 0.86rem;
+    }
+
+    .interaction-result {
+      display: none;
+      margin-top: 24px;
+      padding: 25px;
+      color: var(--cream);
+      background: var(--dark);
+      border-left: 4px solid var(--red);
+    }
+
+    .interaction-result.visible {
+      display: block;
+    }
+
+    .interaction-result h3 {
+      margin-bottom: 12px;
+      color: var(--mint);
+      font-size: 1.55rem;
+    }
+
+    .interaction-result p {
+      color: #d4dfe2;
+    }
+
+    .interaction-result p + p {
+      margin-top: 12px;
+    }
+
+    .reset-choice {
+      margin-top: 18px;
+      padding: 9px 13px;
+      color: var(--dark);
+      background: var(--mint);
+      border: none;
+      border-radius: 3px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    /* MULTIMEDIA */
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: 1fr 0.8fr;
+      gap: 35px;
+      align-items: start;
+    }
+
+    .video-frame {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: 1px solid var(--line);
+      background: #000;
+    }
+
+    .video-frame iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .media-copy h3 {
+      margin-bottom: 15px;
+      font-size: 1.8rem;
+    }
+
+    .media-copy p {
+      color: var(--muted);
+    }
+
+    .media-copy p + p {
+      margin-top: 15px;
+    }
+
+    /* CONCLUSIÓN Y FUENTES */
+
+    .conclusion {
+      padding: 30px;
+      background: var(--panel);
+      border-left: 3px solid var(--mint);
+    }
+
+    .conclusion p {
+      color: #d4dfe2;
+    }
+
+    .conclusion p + p {
+      margin-top: 15px;
+    }
+
+    .sources-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 25px;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    .sources-list a {
+      color: var(--mint);
+      overflow-wrap: anywhere;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 28px;
+    }
+
+    .tag {
+      padding: 7px 11px;
+      color: var(--mint);
+      border: 1px solid rgba(164, 234, 212, 0.35);
+      border-radius: 30px;
+      font-size: 0.75rem;
+    }
+
+    /* FOOTER */
+
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 30px 0 40px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+
+    footer a {
+      color: var(--mint);
+      text-decoration: none;
+    }
+
+    .back-top {
+      color: var(--mint);
+      text-decoration: none;
+    }
+
+    /* BUSCADOR */
+
+    .search-message {
+      display: none;
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 20;
+      max-width: 330px;
+      padding: 16px 20px;
+      color: var(--cream);
+      background: var(--blue);
+      border: 1px solid var(--mint);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .search-message.visible {
+      display: block;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 900px) {
+      header {
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .menu {
+        order: 3;
+        width: 100%;
+        gap: 15px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr 0.8fr;
+        gap: 15px;
+      }
+
+      .artwork {
+        min-height: 380px;
+      }
+
+      .intro-grid,
+      .media-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .concept-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .concept-card {
+        padding: 22px;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .page {
+        width: min(100% - 32px, 520px);
+      }
+
+      header {
+        padding: 18px 0;
+      }
+
+      .search {
+        width: 100%;
+      }
+
+      .search input {
+        flex: 1;
+        width: auto;
+      }
+
+      .menu {
+        gap: 12px 16px;
+      }
+
+      .menu a {
+        font-size: 0.68rem;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 55px 0 45px;
+      }
+
+      .hero-copy {
+        order: 1;
+      }
+
+      .artwork {
+        order: 2;
+        min-height: 330px;
+        max-width: 440px;
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      .red-circle {
+        width: 260px;
+        left: 17%;
+      }
+
+      .weeknd-photo {
+        width: 90%;
+        left: 5%;
+      }
+
+      section {
+        padding: 55px 0;
+      }
+
+      .album-grid,
+      .choice-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .album-card {
+        min-height: 210px;
+      }
+
+      .theory {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 22px;
+      }
+
+      .theory-number {
+        font-size: 2rem;
+      }
+
+      .choice {
+        min-height: 130px;
+      }
+
+      footer {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 
 <body>
-<div class="page" id="inicio">
+  <div class="page" id="inicio">
 
-  <header>
-    <button class="menu" id="menuButton" aria-label="Ir al contenido">
-      ☰
-    </button>
+    <header>
+      <a class="logo" href="#inicio">Lenguaje / XO</a>
 
-    <a href="#inicio" class="logo">
-      THE WEEKND
-    </a>
-
-    <label class="search">
-      <input id="searchInput" type="search"
-      placeholder="Buscar..." aria-label="Buscar conceptos">
-      <span>⌕</span>
-    </label>
-  </header>
-
-  <main>
-
-    <section class="hero">
-
-      <nav class="navigation">
-        <a href="#actos">ACTOS</a>
-        <a href="#conceptos">CONCEPTOS</a>
-        <a href="#proyecto">ABOUT</a>
-        <a href="#inicio" class="active">HOME</a>
+      <nav class="menu" aria-label="Navegación principal">
+        <a href="#contexto">Contexto</a>
+        <a href="#teorias">Teorías</a>
+        <a href="#autores">Autores</a>
+        <a href="#interactivo">Interactivo</a>
+        <a href="#fuentes">Fuentes</a>
       </nav>
 
-     <div class="artwork">
-  <div class="red-circle"></div>
-  <img
-    src="./weeknd.png"
-    alt="The Weeknd"
-    class="weeknd-photo"
-  >
-</div>
+      <form class="search" id="searchForm" role="search">
+        <input
+          id="searchInput"
+          type="search"
+          placeholder="Buscar concepto..."
+          aria-label="Buscar una palabra en la página"
+        >
+        <button type="submit">Buscar</button>
+      </form>
+    </header>
 
-      <div class="hero-content">
-        <div class="eyebrow" id="eyebrow">
-          Una experiencia en tres actos
+    <main>
+
+      <!-- PORTADA -->
+
+      <section class="hero" style="border-top: none;" aria-labelledby="main-title">
+        <div class="hero-copy">
+          <span class="eyebrow">Lingüística · Signos · Interpretación</span>
+
+          <h1 id="main-title">
+            Entre el <span>infierno</span> y el paraíso
+          </h1>
+
+          <p>
+            ¿Cómo construyen los fans el significado de la trilogía de
+            The Weeknd? A través de letras, imágenes, videoclips y debates
+            digitales, los seguidores conectan signos y elaboran teorías
+            para interpretar una historia que no todos entienden de la
+            misma manera.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button" href="#teorias">Explorar las teorías</a>
+            <a class="button secondary" href="#interactivo">Probar la actividad</a>
+          </div>
         </div>
 
-        <h1 id="heroTitle">
-          El lenguaje<br>tiene voz.
-        </h1>
+        <div class="artwork" aria-label="Imagen de The Weeknd">
+          <div class="red-circle"></div>
 
-        <p id="heroText">
-          Así como una trilogía musical construye un universo
-          mediante sonidos, imágenes y relatos, el lenguaje
-          crea significados a través de signos compartidos.
-          Explorá sus estructuras, sus usos y las formas
-          en que nos permite comunicarnos.
-        </p>
+          <img
+            src="./weeknd.png"
+            alt="The Weeknd, imagen de portada del proyecto"
+            class="weeknd-photo"
+          >
 
-        <button class="primary-button" id="exploreButton">
-          Explorar ahora ↗
-        </button>
-      </div>
+          <span class="artwork-caption">After Hours · Dawn FM · Hurry Up Tomorrow</span>
+        </div>
+      </section>
 
-      <div class="counter" id="counter">01 / 03</div>
+      <!-- CONTEXTO -->
 
-      <button class="next" id="nextButton"
-      aria-label="Siguiente acto">›</button>
-
-    </section>
-
-    <section class="content-section" id="actos">
-
-      <h2 class="section-title">
-        Tres álbumes, un lenguaje.
-      </h2>
-
-      <p class="section-description">
-        Tres etapas conectadas por una misma búsqueda:
-        comprender cómo construimos significado. Elegí
-        un álbum para descubrir una dimensión del lenguaje.
-      </p>
-
-      <div class="album-grid">
-
-        <button class="album-card selected" data-slide="0">
-          <span class="album-number">ACTO 01 · ROJO</span>
-          <h3>After Hours</h3>
+      <section id="contexto">
+        <div class="section-heading">
+          <span class="section-number">01 / Contexto</span>
+          <h2>Una historia que los fans <span class="accent">reconstruyen</span></h2>
           <p>
-            Los signos, la lengua y las estructuras que
-            compartimos para construir significados.
-          </p>
-          <span class="album-tag">SIGNOS Y SISTEMA</span>
-        </button>
-
-        <button class="album-card" data-slide="1">
-          <span class="album-number">ACTO 02 · NEÓN</span>
-          <h3>Dawn FM</h3>
-          <p>
-            Del conocimiento lingüístico al uso concreto:
-            hablar, interpretar y comunicarnos.
-          </p>
-          <span class="album-tag">COMPETENCIA Y USO</span>
-        </button>
-
-        <button class="album-card" data-slide="2">
-          <span class="album-number">ACTO 03 · UMBRAL</span>
-          <h3>Hurry Up Tomorrow</h3>
-          <p>
-            La lingüística como ciencia y el estudio
-            sistemático del lenguaje humano.
-          </p>
-          <span class="album-tag">CIENCIA DEL LENGUAJE</span>
-        </button>
-
-      </div>
-    </section>
-
-    <section class="content-section" id="conceptos">
-
-      <div class="study-panel">
-
-        <div>
-          <span class="mini-title">Study guide</span>
-          <h3 id="panelTitle">
-            El lenguaje como sistema de signos
-          </h3>
-          <p id="panelIntro">
-            Las lenguas no son una lista desordenada
-            de palabras. Son sistemas compartidos en los
-            que cada signo adquiere valor a partir de sus
-            relaciones con los demás elementos.
+            La trilogía funciona como un punto de partida para interpretar
+            cómo se produce el significado y cómo las comunidades digitales
+            participan en esa construcción.
           </p>
         </div>
 
-        <div class="concepts" id="conceptList">
+        <div class="intro-grid">
+          <div class="body-copy">
+            <p>
+              The Weeknd desarrolló una trilogía formada por
+              <em>After Hours</em> (2020), <em>Dawn FM</em> (2022) y
+              <em>Hurry Up Tomorrow</em> (2025). Los discos presentan
+              imágenes, personajes, letras y referencias que los seguidores
+              relacionan para proponer una continuidad narrativa.
+            </p>
 
-          <div class="concept">
-            <strong>Homo loquens</strong>
-            <span>
-              El ser humano como ser capaz de lenguaje,
-              fundamental para la vida social.
-            </span>
+            <p>
+              En Reddit, los fans publican hipótesis, comparan portadas,
+              recuperan fragmentos de canciones y discuten qué lugar ocupa
+              cada álbum dentro de la historia. Algunas interpretaciones
+              vinculan la trilogía con el recorrido de
+              <em>La divina comedia</em> de Dante: infierno, purgatorio y
+              paraíso. Otras cuestionan que esa correspondencia sea tan
+              directa o sostienen que el último álbum no representa una
+              salvación definitiva.
+            </p>
+
+            <p>
+              El interés lingüístico no consiste en decidir cuál teoría es
+              la verdadera, sino en observar <strong>cómo se construyen,
+              justifican y discuten los significados</strong>. Los usuarios
+              seleccionan signos diferentes, los conectan con conocimientos
+              previos y proponen una lectura para que otros la acepten,
+              discutan o modifiquen.
+            </p>
           </div>
 
-          <div class="concept">
-            <strong>Signo lingüístico</strong>
-            <span>
-              Unión de un significante y un significado
-              dentro del sistema de una lengua.
-            </span>
-          </div>
-
-          <div class="concept">
-            <strong>Lengua y habla</strong>
-            <span>
-              La lengua es el sistema compartido y el habla
-              su realización concreta.
-            </span>
-          </div>
-
-          <div class="concept">
-            <strong>Estructura</strong>
-            <span>
-              Los elementos lingüísticos adquieren valor
-              por las relaciones que mantienen entre sí.
-            </span>
-          </div>
-
+          <aside class="note">
+            <h3>Pregunta central</h3>
+            <p>
+              Si todos observan las mismas portadas y escuchan los mismos
+              álbumes, ¿por qué no llegan necesariamente a la misma
+              interpretación?
+            </p>
+            <br>
+            <p>
+              Para responder, analizamos las relaciones entre los signos,
+              las funciones del lenguaje y el contexto en el que los fans
+              se comunican.
+            </p>
+          </aside>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="content-section" id="proyecto">
-      <span class="mini-title">El concepto</span>
+      <!-- TRILOGÍA -->
 
-      <h2 class="section-title">
-        Un lenguaje propio.
-      </h2>
+      <section id="actos">
+        <div class="section-heading">
+          <span class="section-number">02 / El corpus</span>
+          <h2>Tres álbumes, distintas lecturas</h2>
+          <p>
+            Los discos forman parte del contexto que los usuarios recuperan
+            para fundamentar sus teorías. No existe una única lectura
+            obligatoria de sus imágenes y letras.
+          </p>
+        </div>
 
-      <p class="section-description">
-        Este proyecto combina música, diseño y lingüística
-        para presentar el lenguaje como un sistema dinámico
-        de signos, estructuras y usos. Cada álbum representa
-        una entrada distinta a su estudio: cómo se construye
-        el significado, cómo usamos la lengua y cómo la
-        lingüística investiga estos fenómenos.
-      </p>
-    </section>
+        <div class="album-grid">
+          <article class="album-card" style="--card-color: #f12613;">
+            <div>
+              <span class="year">2020 · PRIMER ÁLBUM</span>
+              <h3>After Hours</h3>
+              <p>
+                El descenso, la autodestrucción, la culpa y el sufrimiento
+                son algunos de los elementos que los fans relacionan con
+                una posible representación del infierno.
+              </p>
+            </div>
+            <a href="#teoria1">Ver la teoría →</a>
+          </article>
 
-  </main>
+          <article class="album-card" style="--card-color: #12a984;">
+            <div>
+              <span class="year">2022 · SEGUNDO ÁLBUM</span>
+              <h3>Dawn FM</h3>
+              <p>
+                La radio, el tránsito y la revisión de la propia vida
+                permiten proponer una lectura vinculada con el limbo
+                o el purgatorio.
+              </p>
+            </div>
+            <a href="#teoria1">Ver la teoría →</a>
+          </article>
 
-  <footer>
-    <span>LINGÜÍSTICA · PROYECTO ACADÉMICO</span>
-    <span>Tres eras. Varios signficados</span>
-  </footer>
+          <article class="album-card" style="--card-color: #a4ead4;">
+            <div>
+              <span class="year">2025 · TERCER ÁLBUM</span>
+              <h3>Hurry Up Tomorrow</h3>
+              <p>
+                La búsqueda de redención, el cambio y la posibilidad de
+                escapar de una identidad anterior abren el debate sobre
+                qué significa alcanzar el paraíso.
+              </p>
+            </div>
+            <a href="#teoria3">Ver la teoría →</a>
+          </article>
+        </div>
+      </section>
 
-</div>
+      <!-- TEORÍAS DE REDDIT -->
 
-<script>
-const slides = [
-  {
-    eyebrow: "Acto 01 · Signos y estructuras",
-    title: "El lenguaje<br>tiene voz.",
-    text: "Las lenguas son sistemas de signos compartidos. Sus elementos se relacionan entre sí y permiten que las personas produzcan e interpreten significados.",
-    panelTitle: "El lenguaje como sistema de signos",
-    panelIntro: "Para comprender una lengua no alcanza con memorizar palabras. Es necesario entender cómo se organizan los signos y qué relaciones establecen dentro de un sistema.",
-    concepts: [
-      ["Homo loquens", "El ser humano como ser capaz de lenguaje, una facultad central para la vida social."],
-      ["Signo lingüístico", "Desde Saussure, unión de significante y significado."],
-      ["Lengua y habla", "La lengua es el sistema compartido; el habla, su realización concreta."],
-      ["Estructura", "Los elementos lingüísticos adquieren valor por sus relaciones dentro del sistema."]
-    ]
-  },
-  {
-    eyebrow: "Acto 02 · Conocimiento y uso",
-    title: "Del saber<br>al decir.",
-    text: "Conocer una lengua implica manejar sus reglas y recursos, pero comunicarse también requiere adaptar lo que decimos al contexto, a los interlocutores y a nuestras intenciones.",
-    panelTitle: "Del conocimiento lingüístico al uso",
-    panelIntro: "El lenguaje se manifiesta en situaciones reales. Para estudiarlo es importante distinguir el conocimiento de las reglas, la capacidad de comunicarse apropiadamente y el uso concreto de la lengua.",
-    concepts: [
-      ["Competencia lingüística", "Conocimiento de las reglas y recursos de una lengua."],
-      ["Competencia comunicativa", "Capacidad de usar el lenguaje adecuadamente según el contexto social."],
-      ["Actuación", "Uso concreto del conocimiento lingüístico en una situación determinada."],
-      ["Contexto", "Circunstancias, participantes e intenciones que influyen en la interpretación."]
-    ]
-  },
-  {
-    eyebrow: "Acto 03 · Ciencia del lenguaje",
-    title: "Escuchar.<br>Analizar.<br>Comprender.",
-    text: "La lingüística estudia científicamente el lenguaje humano. Describe las lenguas, identifica regularidades y desarrolla explicaciones sobre sus sonidos, estructuras, significados y usos.",
-    panelTitle: "La lingüística como ciencia",
-    panelIntro: "La lingüística busca describir y explicar cómo funciona el lenguaje a partir de la observación sistemática de las lenguas y de sus distintas dimensiones.",
-    concepts: [
-      ["Objeto de estudio", "El lenguaje humano y las lenguas."],
-      ["Descripción", "Observación y análisis de las regularidades lingüísticas."],
-      ["Explicación", "Propuestas que permiten comprender los patrones encontrados."],
-      ["Diversidad", "Estudio de las lenguas y sus variedades en diferentes comunidades."]
-    ]
-  }
-];
+      <section id="teorias">
+        <div class="section-heading">
+          <span class="section-number">03 / El debate en Reddit</span>
+          <h2>¿Infierno, purgatorio y paraíso?</h2>
+          <p>
+            Las siguientes publicaciones permiten observar cómo los
+            seguidores elaboran diferentes explicaciones a partir de
+            signos compartidos. Cada teoría constituye una interpretación
+            de los fans, no una confirmación automática de la intención
+            del artista.
+          </p>
+        </div>
 
-let currentSlide = 0;
+        <div class="theory-list">
 
-const title = document.getElementById("heroTitle");
-const eyebrow = document.getElementById("eyebrow");
-const text = document.getElementById("heroText");
-const counter = document.getElementById("counter");
-const panelTitle = document.getElementById("panelTitle");
-const panelIntro = document.getElementById("panelIntro");
-const conceptList = document.getElementById("conceptList");
+          <!-- TEORÍA 1 -->
 
-function showSlide(index) {
-  currentSlide = (index + slides.length) % slides.length;
+          <article class="theory" id="teoria1">
+            <div class="theory-number">01</div>
 
-  const slide = slides[currentSlide];
+            <div>
+              <h3>La trilogía como un viaje espiritual</h3>
 
-  eyebrow.textContent = slide.eyebrow;
-  title.innerHTML = slide.title;
-  text.textContent = slide.text;
+              <p>
+                Una primera interpretación relaciona los tres álbumes con
+                las etapas de <em>La divina comedia</em>: el infierno,
+                el purgatorio y el paraíso. Desde esta perspectiva,
+                <em>After Hours</em> representa el sufrimiento y la
+                autodestrucción; <em>Dawn FM</em>, un estado intermedio
+                de revisión y arrepentimiento; y <em>Hurry Up Tomorrow</em>,
+                la posibilidad de alcanzar una transformación.
+              </p>
 
-  panelTitle.textContent = slide.panelTitle;
-  panelIntro.textContent = slide.panelIntro;
+              <p>
+                Esta lectura no surge de un único signo aislado. Los fans
+                conectan letras, atmósferas sonoras, imágenes y referencias
+                religiosas o espirituales. La interpretación se vuelve
+                convincente para quienes reconocen una relación entre esos
+                elementos y los organizan como partes de una misma historia.
+              </p>
 
-  counter.textContent =
-    "0" + (currentSlide + 1) + " / 0" + slides.length;
+              <div class="reddit-fragment">
+                <span class="source-label">Fragmento del debate · Reddit</span>
 
-  conceptList.innerHTML = "";
+                <blockquote>
+                  “The final trilogy is based off Dante Alighieri’s book
+                  ‘The Divine Comedy’.”
+                </blockquote>
 
-  slide.concepts.forEach(function(concept) {
-    const item = document.createElement("div");
-    item.className = "concept";
+                <p>
+                  El usuario presenta la relación con Dante como punto de
+                  partida para interpretar los tres álbumes. La hipótesis
+                  organiza los discos como etapas de un recorrido, pero el
+                  debate posterior muestra que esa estructura también puede
+                  cuestionarse.
+                </p>
 
-    const heading = document.createElement("strong");
-    heading.textContent = concept[0];
-
-    const description = document.createElement("span");
-    description.textContent = concept[1];
-
-    item.appendChild(heading);
-    item.appendChild(description);
-    conceptList.appendChild(item);
-  });
-
-  document.querySelectorAll(".album-card").forEach(function(card, i) {
-    card.classList.toggle("selected", i === currentSlide);
-  });
-}
-
-document.getElementById("nextButton").addEventListener("click", function() {
-  showSlide(currentSlide + 1);
-});
-
-document.querySelectorAll(".album-card").forEach(function(card) {
-  card.addEventListener("click", function() {
-    showSlide(Number(card.dataset.slide));
-    document.getElementById("conceptos").scrollIntoView({
-      behavior: "smooth"
-    });
-  });
-});
-
-document.getElementById("exploreButton").addEventListener("click", function() {
-  document.getElementById("actos").scrollIntoView({
-    behavior: "smooth"
-  });
-});
-
-document.getElementById("menuButton").addEventListener("click", function() {
-  document.getElementById("actos").scrollIntoView({
-    behavior: "smooth"
-  });
-});
-
-document.getElementById("searchInput").addEventListener("keydown", function(event) {
-  if (event.key !== "Enter") return;
-
-  const query = this.value.trim().toLocaleLowerCase("es");
-
-  if (!query) return;
-
-  const allConcepts = slides.flatMap(function(slide, index) {
-    return slide.concepts.map(function(concept) {
-      return {
-        title: concept[0],
-        description: concept[1],
-        slide: index
-      };
-    });
-  });
-
-  const result = allConcepts.find(function(concept) {
-    return (concept.title + " " + concept.description)
-      .toLocaleLowerCase("es")
-      .includes(query);
-  });
-
-  if (result) {
-    showSlide(result.slide);
-    document.getElementById("conceptos").scrollIntoView({
-      behavior: "smooth"
-    });
-  } else {
-    alert("No encontré ese concepto. Probá con: signo, lengua, competencia o lingüística.");
-  }
-});
-
-showSlide(0);
-</script>
-
-</body>
-</html>
+                <a
