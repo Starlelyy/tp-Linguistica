@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -29,7 +28,7 @@
 
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 35px;
+      scroll-padding-top: 25px;
     }
 
     body {
@@ -78,6 +77,7 @@
     .menu a:hover, .menu a:focus { color: var(--mint); }
 
     .search { display: flex; gap: 7px; }
+
     .search input {
       width: 145px;
       min-width: 0;
@@ -107,6 +107,7 @@
     }
 
     .hero-copy { position: relative; z-index: 2; }
+
     .eyebrow, .section-number {
       display: block;
       margin-bottom: 15px;
@@ -137,7 +138,12 @@
       color: var(--muted);
     }
 
-    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
 
     .button {
       display: inline-flex;
@@ -155,9 +161,15 @@
     }
 
     .button:hover { transform: translateY(-2px); }
-    .button.secondary { color: var(--cream); background: transparent; border-color: var(--line); }
+
+    .button.secondary {
+      color: var(--cream);
+      background: transparent;
+      border-color: var(--line);
+    }
 
     .artwork { position: relative; min-height: 430px; overflow: hidden; }
+
     .red-circle {
       position: absolute;
       z-index: 0;
@@ -193,9 +205,19 @@
       writing-mode: vertical-rl;
     }
 
-    section { padding: 70px 0; border-top: 1px solid var(--line); }
+    section {
+      padding: 70px 0;
+      border-top: 1px solid var(--line);
+      scroll-margin-top: 20px;
+    }
+
     .section-heading { max-width: 800px; margin-bottom: 35px; }
-    .section-heading h2 { margin-bottom: 15px; font-size: clamp(2rem, 4vw, 3.4rem); }
+
+    .section-heading h2 {
+      margin-bottom: 15px;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+    }
+
     .section-heading p { color: var(--muted); }
     .section-number { color: var(--red); }
     .accent { color: var(--mint); }
@@ -203,7 +225,12 @@
     .body-copy { max-width: 850px; color: #d4dfe2; }
     .body-copy p + p { margin-top: 17px; }
 
-    .intro-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 35px; align-items: start; }
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 35px;
+      align-items: start;
+    }
 
     .note {
       padding: 24px;
@@ -214,7 +241,11 @@
     .note h3 { margin-bottom: 10px; font-size: 1.4rem; }
     .note p { color: var(--muted); font-size: .92rem; }
 
-    .album-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px; }
+    .album-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 18px;
+    }
 
     .album-card {
       min-height: 275px;
@@ -229,7 +260,10 @@
       transition: transform .2s, border-color .2s;
     }
 
-    .album-card:hover { transform: translateY(-4px); border-color: var(--mint); }
+    .album-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--mint);
+    }
 
     .album-card::before {
       content: "";
@@ -247,7 +281,15 @@
     .year { color: var(--muted); font-size: .72rem; letter-spacing: .12em; }
     .album-card h3 { margin: 16px 0 10px; font-size: 1.7rem; }
     .album-card p { color: var(--muted); font-size: .9rem; }
-    .album-card a { display: inline-block; margin-top: 18px; color: var(--mint); font-size: .82rem; text-decoration: none; }
+
+    .album-card a {
+      display: inline-block;
+      margin-top: 18px;
+      color: var(--mint);
+      font-size: .82rem;
+      text-decoration: none;
+    }
+
     .album-card a:hover { text-decoration: underline; }
 
     .theory-list { display: grid; gap: 24px; }
@@ -262,7 +304,13 @@
       scroll-margin-top: 25px;
     }
 
-    .theory-number { color: var(--red); font-family: "Playfair Display", serif; font-size: 2.6rem; line-height: 1; }
+    .theory-number {
+      color: var(--red);
+      font-family: "Playfair Display", serif;
+      font-size: 2.6rem;
+      line-height: 1;
+    }
+
     .theory h3 { margin-bottom: 15px; font-size: 1.7rem; }
     .theory p { color: #d4dfe2; }
     .theory p + p { margin-top: 14px; }
@@ -315,11 +363,31 @@
       font-size: .9rem;
     }
 
-    .concept-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 18px; }
-    .concept-card { padding: 24px; border-top: 3px solid var(--green); background: var(--panel); }
+    .concept-grid {
+      display: grid;
+      grid-template-columns: repeat(3,minmax(0,1fr));
+      gap: 18px;
+    }
+
+    .concept-card {
+      padding: 24px;
+      border-top: 3px solid var(--green);
+      background: var(--panel);
+    }
+
     .concept-card:nth-child(2) { border-top-color: var(--red); }
     .concept-card:nth-child(3) { border-top-color: var(--mint); }
-    .author { display: block; margin-bottom: 10px; color: var(--mint); font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+
+    .author {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--mint);
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
     .concept-card h3 { margin-bottom: 13px; font-size: 1.5rem; }
     .concept-card p { color: var(--muted); font-size: .91rem; }
     .concept-card p + p { margin-top: 12px; }
@@ -328,12 +396,29 @@
     .analysis-text { max-width: 900px; color: #d4dfe2; }
     .analysis-text p + p { margin-top: 16px; }
 
-    .interactive-panel { padding: clamp(24px,5vw,48px); background: var(--cream); color: var(--dark); }
+    .interactive-panel {
+      padding: clamp(24px,5vw,48px);
+      background: var(--cream);
+      color: var(--dark);
+    }
+
     .interactive-panel .section-number { color: #b91c0c; }
-    .interactive-panel h2 { max-width: 750px; margin-bottom: 14px; font-size: clamp(2rem,4vw,3.1rem); }
+
+    .interactive-panel h2 {
+      max-width: 750px;
+      margin-bottom: 14px;
+      font-size: clamp(2rem,4vw,3.1rem);
+    }
+
     .interactive-panel > p { max-width: 780px; color: #40535b; }
 
-    .choice-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 14px; margin-top: 28px; }
+    .choice-grid {
+      display: grid;
+      grid-template-columns: repeat(3,minmax(0,1fr));
+      gap: 14px;
+      margin-top: 28px;
+    }
+
     .choice {
       min-height: 170px;
       padding: 20px;
@@ -365,28 +450,77 @@
     .interaction-result p { color: #d4dfe2; }
     .interaction-result p + p { margin-top: 12px; }
 
-    .reset-choice { margin-top: 18px; padding: 9px 13px; color: var(--dark); background: var(--mint); border: none; border-radius: 3px; font-size: .8rem; font-weight: 700; }
+    .reset-choice {
+      margin-top: 18px;
+      padding: 9px 13px;
+      color: var(--dark);
+      background: var(--mint);
+      border: none;
+      border-radius: 3px;
+      font-size: .8rem;
+      font-weight: 700;
+    }
 
-    .media-grid { display: grid; grid-template-columns: 1fr .8fr; gap: 32px; align-items: start; }
-    .video-frame { width: 100%; aspect-ratio: 16/9; border: 1px solid var(--line); background: #000; }
+    .media-grid {
+      display: grid;
+      grid-template-columns: 1fr .8fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .video-frame {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border: 1px solid var(--line);
+      background: #000;
+    }
+
     .video-frame iframe { display: block; width: 100%; height: 100%; border: 0; }
     .media-copy h3 { margin-bottom: 14px; font-size: 1.7rem; }
     .media-copy p { color: var(--muted); }
     .media-copy p + p { margin-top: 14px; }
 
-    .conclusion { padding: 28px; background: var(--panel); border-left: 3px solid var(--mint); }
+    .conclusion {
+      padding: 28px;
+      background: var(--panel);
+      border-left: 3px solid var(--mint);
+    }
+
     .conclusion p { color: #d4dfe2; }
     .conclusion p + p { margin-top: 14px; }
 
-    .sources-list { display: grid; gap: 16px; margin: 24px 0 0 20px; color: var(--muted); }
+    .sources-list {
+      display: grid;
+      gap: 16px;
+      margin: 24px 0 0 20px;
+      color: var(--muted);
+    }
+
     .sources-list li { padding-left: 5px; }
     .sources-list a { color: var(--mint); overflow-wrap: anywhere; }
     .sources-list p { margin-top: 4px; }
 
     .tags { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 25px; }
-    .tag { padding: 6px 10px; color: var(--mint); border: 1px solid rgba(164,234,212,.35); border-radius: 30px; font-size: .73rem; }
 
-    footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 30px 0 40px; border-top: 1px solid var(--line); color: var(--muted); font-size: .78rem; }
+    .tag {
+      padding: 6px 10px;
+      color: var(--mint);
+      border: 1px solid rgba(164,234,212,.35);
+      border-radius: 30px;
+      font-size: .73rem;
+    }
+
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 30px 0 40px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .78rem;
+    }
+
     footer a { color: var(--mint); text-decoration: none; }
 
     .search-message {
@@ -404,27 +538,20 @@
     }
 
     .search-message.visible { display: block; }
-
     mark.search-highlight { color: var(--dark); background: var(--mint); padding: 1px 3px; }
 
-    /* NAVEGACIÓN POR PANTALLAS: SOLO UNA SECCIÓN VISIBLE */
-    main > section {
-      display: none;
-    }
+    /* NAVEGACIÓN: SOLO UNA SECCIÓN VISIBLE */
+    main > section { display: none; }
 
     main > section.view-active {
       display: block;
       animation: appear .3s ease;
     }
 
-    main > section.hero.view-active {
-      display: grid;
-    }
+    main > section.hero.view-active { display: grid; }
 
     /* MOSTRAR UNA SOLA TEORÍA POR VEZ */
-    .theory-list .theory {
-      display: none;
-    }
+    .theory-list .theory { display: none; }
 
     .theory-list .theory.theory-active {
       display: grid;
@@ -432,17 +559,13 @@
     }
 
     @keyframes appear {
-      from {
-        opacity: 0;
-        transform: translateY(8px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+
       main > section.view-active,
       .theory-list .theory.theory-active {
         animation: none;
@@ -1230,7 +1353,7 @@
           <a href="https://www.youtube.com/@TheWeeknd" target="_blank" rel="noopener noreferrer">Abrir canal oficial ↗</a>
         </li>
       </ol>
-      
+
       <div class="tags" aria-label="Etiquetas del proyecto">
         <span class="tag">#Lingüística</span>
         <span class="tag">#Saussure</span>
@@ -1305,7 +1428,13 @@
       });
 
       interactionResult.classList.add("visible");
-      interactionResult.scrollIntoView({ behavior: "smooth", block: "nearest" });
+
+      requestAnimationFrame(function() {
+        interactionResult.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      });
     });
   });
 
@@ -1316,6 +1445,7 @@
 
     interactionResult.classList.remove("visible");
     resultText.replaceChildren();
+
     document.querySelector("#interactivo h2").scrollIntoView({
       behavior: "smooth",
       block: "start"
@@ -1347,8 +1477,10 @@
       item.classList.remove("view-active");
     });
 
-    // Mostrar únicamente la sección seleccionada.
+    // Mostrar la sección seleccionada.
     section.classList.add("view-active");
+
+    let selectedTheory = null;
 
     // Si estamos en Teorías, mostrar solo la teoría elegida.
     if (section === theoriesSection) {
@@ -1356,7 +1488,7 @@
         theory.classList.remove("theory-active");
       });
 
-      const selectedTheory = theoryToShow || theoryCards[0];
+      selectedTheory = theoryToShow || theoryCards[0];
 
       if (selectedTheory) {
         selectedTheory.classList.add("theory-active");
@@ -1378,53 +1510,69 @@
       history.pushState(null, "", newHash);
     }
 
+    // Desplazarse al contenido recién abierto.
     if (shouldScroll) {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+      requestAnimationFrame(function() {
+        requestAnimationFrame(function() {
+          // Si se seleccionó un álbum, ir a su teoría exacta.
+          // Si se eligió "Teorías" en el menú, ir al comienzo de la sección.
+          const destination =
+            section === theoriesSection &&
+            selectedTheory &&
+            hashTarget !== "teorias"
+              ? selectedTheory
+              : section;
+
+          destination.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+        });
       });
     }
   }
 
-function navigateToHash(hash, shouldScroll = true) {
-  const targetId = (hash || "#inicio").slice(1);
+  function navigateToHash(hash, shouldScroll = true) {
+    const targetId = (hash || "#inicio").slice(1);
 
-  if (targetId === "inicio" || !targetId) {
-    showSection(heroSection, null, shouldScroll, "inicio");
-    return;
+    // Volver a la portada.
+    if (targetId === "inicio" || !targetId) {
+      showSection(heroSection, null, shouldScroll, "inicio");
+      return;
+    }
+
+    const target = document.getElementById(targetId);
+
+    if (!target) {
+      console.warn("No existe un destino con el ID:", targetId);
+      return;
+    }
+
+    // Los enlaces de los cuadros de álbumes apuntan a estas teorías.
+    if (target.classList.contains("theory")) {
+      showSection(theoriesSection, target, shouldScroll, targetId);
+      return;
+    }
+
+    // El enlace general "Teorías" muestra la primera teoría,
+    // pero lleva la pantalla al título de la sección.
+    if (targetId === "teorias") {
+      showSection(theoriesSection, theoryCards[0], shouldScroll, "teorias");
+      return;
+    }
+
+    // Mostrar la sección correspondiente al enlace elegido.
+    const section = target.closest("main > section");
+
+    if (section) {
+      showSection(
+        section,
+        null,
+        shouldScroll,
+        section.id || "inicio"
+      );
+    }
   }
-
-  const target = document.getElementById(targetId);
-
-  if (!target) {
-    console.warn("No existe un destino con el ID:", targetId);
-    return;
-  }
-
-  // Si se hace clic en uno de los álbumes, mostrar su teoría.
-  if (target.classList.contains("theory")) {
-    showSection(theoriesSection, target, shouldScroll, targetId);
-    return;
-  }
-
-  // Si se hace clic en el apartado general de teorías,
-  // mostrar la primera teoría.
-  if (targetId === "teorias") {
-    showSection(theoriesSection, theoryCards[0], shouldScroll, "teorias");
-    return;
-  }
-
-  const section = target.closest("main > section");
-
-  if (section) {
-    showSection(
-      section,
-      null,
-      shouldScroll,
-      section.id || "inicio"
-    );
-  }
-}
 
   // Interceptar los enlaces internos del sitio.
   document.addEventListener("click", function(event) {
@@ -1442,7 +1590,7 @@ function navigateToHash(hash, shouldScroll = true) {
 
   // Permitir el funcionamiento de Atrás y Adelante del navegador.
   window.addEventListener("popstate", function() {
-    navigateToHash(window.location.hash, false);
+    navigateToHash(window.location.hash, true);
   });
 
   // Abrir la sección indicada en la URL o mostrar la portada.
@@ -1500,16 +1648,18 @@ function navigateToHash(hash, shouldScroll = true) {
             containingSection,
             null,
             false,
-            containingSection.id
+            containingSection.id || "inicio"
           );
         }
       }
 
-      // Desplazarse al resultado cuando ya está visible.
+      // Esperar a que la sección esté visible y desplazarse al resultado.
       requestAnimationFrame(function() {
-        match.scrollIntoView({
-          behavior: "smooth",
-          block: "center"
+        requestAnimationFrame(function() {
+          match.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+          });
         });
       });
 
